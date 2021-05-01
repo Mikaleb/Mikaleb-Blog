@@ -1,4 +1,28 @@
+import fs from 'fs'
+import path from 'path'
 import axios from 'axios'
+
+const ENV_DEV = false
+
+// Development Environment
+let port = 3000
+let host = 'localhost'
+let https = false
+
+// Production Environment
+if (ENV_DEV === false) {
+  port = 22 // make sure this port is open on your server you can do that via WHM or talk to you hosting company
+  host = 'https://mikaleb.com'
+  https = {
+    key: fs.readFileSync(
+      path.resolve(__dirname, './../../ssl/keys/<ssl-key-file-name>.key')
+    ),
+    cert: fs.readFileSync(
+      path.resolve(__dirname, './../../ssl/certs/<ssl-crt-file-name>.crt')
+    ),
+  }
+}
+
 const dynamicRoutes = () => {
   const routes = axios
     .get('https://backend.mikaleb.com/wp-json/wp/v2/posts?page=1&per_page=20')
@@ -66,4 +90,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  server: {
+    port,
+    host,
+    timing: false,
+    https,
+  },
 }

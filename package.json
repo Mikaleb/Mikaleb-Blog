@@ -15,7 +15,9 @@
     "@nuxtjs/axios": "^5.13.1",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.9.1",
+    "fs": "^0.0.1-security",
     "nuxt": "^2.15.3",
+    "path": "^0.12.7",
     "release-it": "^14.6.1"
   },
   "devDependencies": {
