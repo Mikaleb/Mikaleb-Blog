@@ -2,7 +2,7 @@
   <div class="nav">
     <ul>
       <li>
-        <nuxt-link exact to="/"> <app-icon></app-icon>Mikaleb </nuxt-link>
+        <nuxt-link exact to="/"> <img src="~assets/logo.svg" /> </nuxt-link>
       </li>
       <li>
         <nuxt-link to="/about">About</nuxt-link>
@@ -17,7 +17,6 @@ export default {}
 
 <style lang="scss" scoped>
 .nav {
-  background: #000;
   color: #fff;
   padding: 1em 100px;
 

@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 const dynamicRoutes = () => {
   const routes = axios
     .get('https://backend.mikaleb.com/wp-json/wp/v2/posts?page=1&per_page=20')
@@ -46,6 +45,7 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/svg',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -67,5 +67,5 @@ export default {
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
 }
