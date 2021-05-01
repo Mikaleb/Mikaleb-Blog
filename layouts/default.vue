@@ -6,18 +6,18 @@
 </template>
 
 <script>
-import AppNav from "~/components/AppNav.vue";
+import AppNav from '~/components/AppNav.vue'
 
 export default {
   components: {
-    AppNav
-  }
-};
+    AppNav,
+  },
+}
 </script>
 
 <style>
 html {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -34,7 +34,7 @@ body {
 h1,
 h2,
 h3 {
-  font-family: "Alata", serif;
+  font-family: 'Alata', serif;
   font-weight: normal;
 }
 

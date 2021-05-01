@@ -2,29 +2,30 @@
   <main class="post individual">
     <h1>{{ post.title.rendered }}</h1>
     <small class="date">{{ post.date | dateformat }}</small>
+    <!-- eslint-disable-next-line vue/no-v-html -->
     <section v-html="post.content.rendered"></section>
   </main>
 </template>
 
 <script>
 export default {
-  computed: {
-    posts() {
-      return this.$store.state.posts;
-    },
-    post() {
-      return this.posts.find(el => el.slug === this.slug);
-    }
-  },
   data() {
     return {
-      slug: this.$route.params.slug
-    };
+      slug: this.$route.params.slug,
+    }
+  },
+  computed: {
+    posts() {
+      return this.$store.state.posts
+    },
+    post() {
+      return this.posts.find((el) => el.slug === this.slug)
+    },
   },
   created() {
-    this.$store.dispatch("getPosts");
-  }
-};
+    this.$store.dispatch('getPosts')
+  },
+}
 </script>
 
 <style lang="scss" scoped>

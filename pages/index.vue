@@ -1,26 +1,18 @@
 <template>
   <div>
-    <app-masthead></app-masthead>
     <div class="posts">
       <main>
-        <div class="post" v-for="post in sortedPosts" :key="post.id">
-          <h3>
-            <a :href="`blog/${post.slug}`" v-html="post.title.rendered"></a>
-          </h3>
-          <small>{{ post.date | dateformat }}</small>
-          <div v-html="post.excerpt.rendered"></div>
-          <a :href="`blog/${post.slug}`" class="readmore slide">Read more ⟶</a>
-        </div>
+        <article-index></article-index>
       </main>
       <aside>
         <h2 class="tags-title">Tags</h2>
         <div class="tags-list">
           <ul>
             <li
-              @click="updateTag(tag)"
               v-for="tag in tags"
               :key="tag.id"
               :class="[tag.id === selectedTag ? activeClass : '']"
+              @click="updateTag(tag)"
             >
               <a>{{ tag.name }}</a>
               <span v-if="tag.id === selectedTag">✕</span>
@@ -33,43 +25,33 @@
 </template>
 
 <script>
-import AppMasthead from "@/components/AppMasthead.vue";
+import ArticleIndex from '@/components/article/index'
 
 export default {
   components: {
-    AppMasthead
+    ArticleIndex,
   },
   data() {
     return {
       selectedTag: null,
-      activeClass: "active"
-    };
-  },
-  computed: {
-    posts() {
-      return this.$store.state.posts;
-    },
-    tags() {
-      return this.$store.state.tags;
-    },
-    sortedPosts() {
-      if (!this.selectedTag) return this.posts;
-      return this.posts.filter(el => el.tags.includes(this.selectedTag));
+      activeClass: 'active',
     }
   },
-  created() {
-    this.$store.dispatch("getPosts");
+  computed: {
+    tags() {
+      return this.$store.state.tags
+    },
   },
   methods: {
     updateTag(tag) {
       if (!this.selectedTag) {
-        this.selectedTag = tag.id;
+        this.selectedTag = tag.id
       } else {
-        this.selectedTag = null;
+        this.selectedTag = null
       }
-    }
-  }
-};
+    },
+  },
+}
 </script>
 
 <style lang="scss">
@@ -110,7 +92,7 @@ a.readmore {
   position: relative;
   color: #000;
   font-weight: 700;
-  font-family: "Open Sans", serif;
+  font-family: 'Open Sans', serif;
   border: 1px solid #ccc;
   background: #fff;
 }
@@ -151,7 +133,7 @@ a.readmore {
 }
 
 .tags-list li {
-  font-family: "Open Sans", serif;
+  font-family: 'Open Sans', serif;
   letter-spacing: 1px;
   text-transform: uppercase;
   padding: 6px 15px;
@@ -195,7 +177,7 @@ a.readmore {
 }
 
 .slide::before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   background: #000;
