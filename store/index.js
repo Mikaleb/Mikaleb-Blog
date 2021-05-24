@@ -3,6 +3,7 @@ const siteURL = 'https://www.backend.mikaleb.com'
 export const state = () => ({
   posts: [],
   tags: [],
+  menus: {},
 })
 
 export const mutations = {
@@ -11,6 +12,9 @@ export const mutations = {
   },
   updateTags: (state, tags) => {
     state.tags = tags
+  },
+  updateMenus: (state, menus) => {
+    state.menus = menus
   },
 }
 
@@ -25,15 +29,28 @@ export const actions = {
 
       posts = posts
         .filter((el) => el.status === 'publish')
-        .map(({ id, slug, title, excerpt, date, tags, content }) => ({
-          id,
-          slug,
-          title,
-          excerpt,
-          date,
-          tags,
-          content,
-        }))
+        .map(
+          ({
+            id,
+            slug,
+            title,
+            excerpt,
+            date,
+            tags,
+            content,
+            // eslint-disable-next-line camelcase
+            featured_image_src,
+          }) => ({
+            id,
+            slug,
+            title,
+            excerpt,
+            date,
+            tags,
+            content,
+            featured_image_src,
+          })
+        )
 
       commit('updatePosts', posts)
     } catch (err) {
@@ -59,6 +76,19 @@ export const actions = {
       }))
 
       commit('updateTags', tags)
+    } catch (err) {
+      // console.log(err)
+    }
+  },
+
+  async getMenus({ state, commit }) {
+    if (state.menus.length) return
+
+    try {
+      const menus = await fetch(`${siteURL}/wp-json/wp/v2/menus`).then((res) =>
+        res.json()
+      )
+      commit('updateMenus', menus)
     } catch (err) {
       // console.log(err)
     }

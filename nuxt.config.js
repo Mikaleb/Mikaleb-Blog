@@ -13,7 +13,7 @@ const dynamicRoutes = () => {
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'frontend',
+    title: 'Mikaleb',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -29,6 +29,7 @@ export default {
   plugins: [
     '~/plugins/posts.server.js',
     '~/plugins/tags.server.js',
+    '~/plugins/menus.server.js',
     '~/plugins/dateformat.js',
   ],
 
@@ -46,6 +47,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
+    '@nuxtjs/google-fonts',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,6 +60,13 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+
+  googleFonts: {
+    families: {
+      'Open+Sans': true,
+      'Space+Grotesk': true,
+    },
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

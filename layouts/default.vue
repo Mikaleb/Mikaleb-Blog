@@ -1,43 +1,21 @@
 <template>
-  <div>
-    <app-nav />
+  <div class="">
+    <Hmenu />
     <nuxt />
   </div>
 </template>
 
 <script>
-import AppNav from '~/components/AppNav.vue'
+import Hmenu from '~/components/design/Hmenu.vue'
 
 export default {
   components: {
-    AppNav,
+    Hmenu,
   },
 }
 </script>
 
-<style>
-html {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #fff;
-}
-
-h1,
-h2,
-h3 {
-  font-family: 'Alata', serif;
-  font-weight: normal;
-}
-
+<style lang="scss">
 *,
 *:before,
 *:after {
