@@ -1,7 +1,11 @@
 <template>
   <div class="">
-    <Hmenu />
-    <nuxt />
+    <header class="sticky top-0 z-40 w-full mx-auto lg:z-50 max-w-8xl bg-mkGray">
+      <Hmenu />
+    </header>
+    <div class="w-full mx-auto">
+      <nuxt />
+    </div>
   </div>
 </template>
 
@@ -17,8 +21,8 @@ export default {
 
 <style lang="scss">
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
 }

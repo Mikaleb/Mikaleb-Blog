@@ -3,7 +3,7 @@ const siteURL = 'https://www.backend.mikaleb.com'
 export const state = () => ({
   posts: [],
   tags: [],
-  menus: {},
+  menus: {}
 })
 
 export const mutations = {
@@ -15,20 +15,20 @@ export const mutations = {
   },
   updateMenus: (state, menus) => {
     state.menus = menus
-  },
+  }
 }
 
 export const actions = {
-  async getPosts({ state, commit }) {
-    if (state.posts.length) return
+  async getPosts ({ state, commit }) {
+    if (state.posts.length) { return }
 
     try {
       let posts = await fetch(
         `${siteURL}/wp-json/wp/v2/posts?page=1&per_page=20&_embed=1`
-      ).then((res) => res.json())
+      ).then(res => res.json())
 
       posts = posts
-        .filter((el) => el.status === 'publish')
+        .filter(el => el.status === 'publish')
         .map(
           ({
             id,
@@ -39,7 +39,7 @@ export const actions = {
             tags,
             content,
             // eslint-disable-next-line camelcase
-            featured_image_src,
+            featured_image_src
           }) => ({
             id,
             slug,
@@ -48,7 +48,7 @@ export const actions = {
             date,
             tags,
             content,
-            featured_image_src,
+            featured_image_src
           })
         )
 
@@ -57,8 +57,8 @@ export const actions = {
       // console.log(err)
     }
   },
-  async getTags({ state, commit }) {
-    if (state.tags.length) return
+  async getTags ({ state, commit }) {
+    if (state.tags.length) { return }
 
     let allTags = state.posts.reduce((acc, item) => {
       return acc.concat(item.tags)
@@ -68,11 +68,11 @@ export const actions = {
     try {
       let tags = await fetch(
         `${siteURL}/wp-json/wp/v2/tags?page=1&per_page=40&include=${allTags}`
-      ).then((res) => res.json())
+      ).then(res => res.json())
 
       tags = tags.map(({ id, name }) => ({
         id,
-        name,
+        name
       }))
 
       commit('updateTags', tags)
@@ -81,16 +81,16 @@ export const actions = {
     }
   },
 
-  async getMenus({ state, commit }) {
-    if (state.menus.length) return
+  async getMenus ({ state, commit }) {
+    if (state.menus.length) { return }
 
     try {
-      const menus = await fetch(`${siteURL}/wp-json/wp/v2/menus`).then((res) =>
+      const menus = await fetch(`${siteURL}/wp-json/wp/v2/menus`).then(res =>
         res.json()
       )
       commit('updateMenus', menus)
     } catch (err) {
       // console.log(err)
     }
-  },
+  }
 }

@@ -3,36 +3,30 @@
     <div
       v-for="post in sortedPosts"
       :key="post.id"
-      class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow-lg mb-16"
+      class="flex-1 mb-16 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg "
     >
       <div
-        class="container w-full max-w-6xl mx-auto bg-white object-cover rounded"
+        class="container object-cover w-full max-w-6xl mx-auto bg-white rounded"
         :style="`
           background-image: url('${post.featured_image_src.large}');
           height: 25vh;
         `"
-      ></div>
-      <!-- <div>
-        <img
-          :src="post.featured_image_src.large"
-          class="h-80 w-full rounded-t pb-6 object-cover"
-        />
-      </div> -->
+      />
       <div class="container max-w-5xl mx-auto -mt-16">
         <div class="mx-0 sm:mx-6">
           <div
-            class="bg-white w-full p-8 md:p-8 text-xl md:text-2xl text-gray-800 leading-normal"
+            class="w-full p-8 text-xl leading-normal text-gray-800 bg-white md:p-8 md:text-2xl"
           >
-            <h2 class="w-full font-bold text-2xl text-gray-900 px-6">
-              <a :href="`blog/${post.slug}`" v-html="post.title.rendered"></a>
+            <h2 class="w-full px-6 text-2xl font-bold text-gray-900">
+              <a :href="`blog/${post.slug}`" v-html="post.title.rendered" />
             </h2>
-            <small class="w-full text-gray-600 text-xs md:text-sm px-6">
+            <small class="w-full px-6 text-xs text-gray-600 md:text-sm">
               {{ post.date | dateformat }}
             </small>
             <div
-              class="text-gray-800 font-serif text-base mb-5"
+              class="mb-5 font-serif text-base text-gray-800"
               v-html="post.content.rendered"
-            ></div>
+            />
           </div>
         </div>
       </div>
@@ -42,35 +36,35 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       selectedTag: null,
-      activeClass: 'active',
+      activeClass: 'active'
     }
   },
   computed: {
-    posts() {
+    posts () {
       return this.$store.state.posts
     },
-    tags() {
+    tags () {
       return this.$store.state.tags
     },
-    sortedPosts() {
-      if (!this.selectedTag) return this.posts
-      return this.posts.filter((el) => el.tags.includes(this.selectedTag))
-    },
+    sortedPosts () {
+      if (!this.selectedTag) { return this.posts }
+      return this.posts.filter(el => el.tags.includes(this.selectedTag))
+    }
   },
-  created() {
+  created () {
     this.$store.dispatch('getPosts')
   },
   methods: {
-    updateTag(tag) {
+    updateTag (tag) {
       if (!this.selectedTag) {
         this.selectedTag = tag.id
       } else {
         this.selectedTag = null
       }
-    },
-  },
+    }
+  }
 }
 </script>

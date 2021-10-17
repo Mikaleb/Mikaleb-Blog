@@ -1,17 +1,19 @@
 <template>
-  <div>
-    <div class="posts">
-      <main>
-        <article-index></article-index>
-      </main>
-      <aside>
-        <h2 class="tags-title">Tags</h2>
+  <div class="flex pt-8 mx-auto mt-8 max-w-8xl">
+    <main id="posts">
+      <article-index />
+    </main>
+    <aside class="flex w-2/6" id="sidebar">
+      <div id="side-element">
+        <h2 class="tags-title">
+          Tags
+        </h2>
         <div class="tags-list">
           <ul>
             <li
               v-for="tag in tags"
               :key="tag.id"
-              :class="[tag.id === selectedTag ? activeClass : '']"
+              :class="[tag.id === selectedTag ? activeClass : '' ]"
               @click="updateTag(tag)"
             >
               <a>{{ tag.name }}</a>
@@ -19,8 +21,8 @@
             </li>
           </ul>
         </div>
-      </aside>
-    </div>
+      </div>
+    </aside>
   </div>
 </template>
 
@@ -29,47 +31,34 @@ import ArticleIndex from '@/components/article/index'
 
 export default {
   components: {
-    ArticleIndex,
+    ArticleIndex
   },
-  data() {
+  data () {
     return {
       selectedTag: null,
-      activeClass: 'active',
+      activeClass: 'active'
     }
   },
   computed: {
-    tags() {
+    tags () {
       return this.$store.state.tags
-    },
+    }
   },
   methods: {
-    updateTag(tag) {
+    updateTag (tag) {
       if (!this.selectedTag) {
         this.selectedTag = tag.id
       } else {
         this.selectedTag = null
       }
-    },
-  },
+    }
+  }
 }
 </script>
 
 <style lang="scss">
-.posts {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr;
-  grid-column-gap: 6vw;
-  margin: 5em auto;
-  max-width: 80vw;
-}
-
-main {
-  grid-area: 1 / 1 / 2 / 2;
-}
-
-aside {
-  grid-area: 1 / 2 / 2 / 3;
+#posts {
+  @apply flex flex-grow;
 }
 
 h2 {
@@ -81,6 +70,10 @@ a:active,
 a:visited {
   text-decoration: none;
   color: black;
+}
+
+#sidebar {
+  background:#f7f4e3;
 }
 
 a.readmore {
@@ -98,8 +91,6 @@ a.readmore {
 }
 
 .tags-title {
-  background-color: #000;
-  color: #fff;
   border: none;
   text-transform: capitalize;
   letter-spacing: 0;
@@ -107,11 +98,9 @@ a.readmore {
   padding: 15px;
   margin: 0 35px;
   position: relative;
-  top: -25px;
 }
 
 .tags-list {
-  background: #f5f5f5;
   padding: 70px 25px 25px;
   margin-top: -65px;
 }
@@ -170,23 +159,21 @@ a.readmore {
   &:hover {
     color: #fff;
   }
-
-  &:hover:before {
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background: #000;
+    transition: right 0.3s ease;
+    z-index: -1;
+    top: -2px;
+    bottom: -2px;
+    left: -2px;
+    right: 108%;
+    backface-visibility: hidden;
+  }
+  &:hover::before {
     right: -1px;
   }
-}
-
-.slide::before {
-  content: '';
-  display: block;
-  position: absolute;
-  background: #000;
-  transition: right 0.3s ease;
-  z-index: -1;
-  top: -2px;
-  bottom: -2px;
-  left: -2px;
-  right: 108%;
-  backface-visibility: hidden;
 }
 </style>

@@ -2,10 +2,14 @@
   <div class="nav">
     <ul>
       <li>
-        <nuxt-link exact to="/"> <img src="~assets/logo.svg" /> </nuxt-link>
+        <nuxt-link exact to="/">
+          <img src="~assets/logo.svg">
+        </nuxt-link>
       </li>
       <li>
-        <nuxt-link to="/about">About</nuxt-link>
+        <nuxt-link to="/about">
+          About
+        </nuxt-link>
       </li>
     </ul>
   </div>

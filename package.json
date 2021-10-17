@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "mikaleblog",
   "version": "2.0.0",
   "private": true,
   "scripts": {
@@ -9,38 +9,42 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
+    "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
     "release": "release-it"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.1",
+    "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/pwa": "^3.3.5",
-    "@nuxtjs/svg": "^0.1.12",
-    "core-js": "^3.9.1",
+    "@nuxtjs/svg": "^0.3.0",
+    "core-js": "^3.18.3",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
-    "nuxt": "^2.15.3",
+    "nuxt": "^2.15.8",
     "path": "^0.12.7",
-    "release-it": "^14.6.1",
-    "tarteaucitronjs": "^1.9.1"
+    "release-it": "^14.11.6",
+    "tarteaucitronjs": "^1.9.4"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.15.3",
+    "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/eslint-config-typescript": "^6.0.0",
+    "@nuxtjs/eslint-config-typescript": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/google-fonts": "^1.3.0",
-    "@nuxtjs/tailwindcss": "^4.0.1",
+    "@nuxtjs/tailwindcss": "^4.2.1",
     "babel-eslint": "^10.1.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.7.0",
-    "node-sass": "^5.0.0",
-    "postcss": "^8.2.8",
-    "prettier": "^2.2.1",
-    "sass-loader": "^10"
+    "eslint-plugin-vue": "^7.19.1",
+    "node-sass": "^6.0.1",
+    "postcss": "^8.3.9",
+    "prettier": "^2.4.1",
+    "sass-loader": "^10",
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0"
   },
   "config": {
     "commitizen": {

@@ -1,30 +1,31 @@
 <template>
   <main class="post individual">
-    <h1>{{ post.title.rendered }}</h1>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <h1 v-html="post.title.rendered" />
     <small class="date">{{ post.date | dateformat }}</small>
     <!-- eslint-disable-next-line vue/no-v-html -->
-    <section v-html="post.content.rendered"></section>
+    <section v-html="post.content.rendered" />
   </main>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      slug: this.$route.params.slug,
+      slug: this.$route.params.slug
     }
   },
   computed: {
-    posts() {
+    posts () {
       return this.$store.state.posts
     },
-    post() {
-      return this.posts.find((el) => el.slug === this.slug)
-    },
+    post () {
+      return this.posts.find(el => el.slug === this.slug)
+    }
   },
-  created() {
+  created () {
     this.$store.dispatch('getPosts')
-  },
+  }
 }
 </script>
 
