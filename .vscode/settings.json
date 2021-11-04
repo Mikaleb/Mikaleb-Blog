@@ -2,5 +2,5 @@
     "files.exclude": {
         "node_modules": true
     },
-    "workspace.isHidden": false
+    "workspace.isHidden": true
 }
