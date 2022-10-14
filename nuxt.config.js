@@ -2,9 +2,11 @@ import axios from 'axios'
 
 const dynamicRoutes = () => {
   const routes = axios
-    .get('https://backend.mikaleb.com/wp-json/wp/v2/posts?page=1&per_page=20')
+    .get(
+      process.env.NUXT_ENV_WP_URL + '/wp-json/wp/v2/posts?page=1&per_page=20'
+    )
     .then((res) => {
-      return res.data.map(post => `/blog/${post.slug}`)
+      return res.data.map((post) => `/blog/${post.slug}`)
     })
   // console.log(routes)
   return routes
@@ -17,9 +19,9 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Mikaleb' }
+      { hid: 'description', name: 'description', content: 'Mikaleb' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -27,14 +29,13 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/posts.server.js',
     '~/plugins/tags.server.js',
     '~/plugins/menus.server.js',
-    '~/plugins/dateformat.js'
+    '~/plugins/dateformat.js',
   ],
 
   generate: {
-    routes: dynamicRoutes
+    routes: dynamicRoutes,
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -47,7 +48,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -55,7 +56,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -64,17 +65,17 @@ export default {
   googleFonts: {
     families: {
       'Open+Sans': true,
-      'Space+Grotesk': true
-    }
+      'Space+Grotesk': true,
+    },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
-    }
+      lang: 'en',
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
 }
