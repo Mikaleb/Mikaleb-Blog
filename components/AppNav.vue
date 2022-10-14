@@ -34,10 +34,7 @@ export default {}
 }
 
 div {
-  align-items: center;
-  display: flex;
-  height: 100%;
-  width: 100%;
+  @apply items-center flex h-full w-full;
 }
 
 ul {
@@ -45,7 +42,7 @@ ul {
 
   li {
     display: inline-block;
-    margin-right: 30px;
+    @apply mr-8;
   }
 }
 </style>
