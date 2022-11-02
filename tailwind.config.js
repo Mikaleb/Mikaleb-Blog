@@ -7,9 +7,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: {
-      mkGray: '#efefef',
+      mkGray: '#D9D9D9',
       mkDarkGray: '#2a2b2a',
-      ...defaultColors
-    }
-  }
+      ...defaultColors,
+    },
+  },
 }

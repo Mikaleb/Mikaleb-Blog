@@ -6,14 +6,12 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      tagline: 'Headless WordPress on the JAMstack'
+      tagline: '',
     }
-  }
+  },
 }
 </script>
 
-<style lang="scss" scoped>
-@import '@/assets/mixins.scss';
-</style>
+<style lang="scss" scoped></style>

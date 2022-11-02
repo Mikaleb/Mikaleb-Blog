@@ -1,49 +1,45 @@
-// @import "mixins";
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('./widget.scss');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Work Sans', sans-serif;
 }
 
 p {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-    word-spacing: 1px;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-    box-sizing: border-box;
-    @apply text-mkDarkGray
-  }
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  @apply text-mkDarkGray;
+}
 
 body {
-    @apply bg-mkGray
+  @apply bg-mkGray;
 }
 
 a {
-    color: #279AF1!important;
-    &:visited{
-        color:#23B5D3!important;
-    }
+  color: #279af1 !important;
+  &:visited {
+    color: #23b5d3 !important;
+  }
 }
 
 p {
-    @apply text-mkDarkGray
+  @apply text-mkDarkGray;
 }
-
-.vlp-layout-2-columns{background-color:white;border-width:1px;border-style:solid;border-color:black;border-radius:5px;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;margin-top:10px;margin-bottom:10px;display:flex;} .vlp-layout-2-columns .vlp-layout-zone-main{flex:1;} .vlp-layout-2-columns .vlp-layout-zone-side{flex-shrink:0;max-width:100%;padding-right:10px;} .vlp-layout-2-columns .vlp-block-0{font-weight:bold;font-size:1.2em;line-height:2em;} .vlp-layout-2-columns .vlp-block-2{display:flex;overflow:hidden;} .vlp-layout-2-columns .vlp-block-2 img{width:100%;}@media all and (max-width: 450px) {.vlp-layout-2-columns{flex-wrap: wrap;}.vlp-layout-2-columns .vlp-layout-zone-side{margin: 0 auto;padding:0;}}
 
 blockquote p {
-    @apply font-bold;
-}
-
-.max-w-7xl {
-    max-width: 72rem !important;
-}
-
-.max-w-8xl {
-    max-width: 80rem !important;
-}
-
-.max-w-9xl {
-    max-width: 90rem !important;
+  @apply font-bold;
 }

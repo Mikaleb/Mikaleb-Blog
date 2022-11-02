@@ -2,6 +2,7 @@ const siteURL = process.env.NUXT_ENV_WP_URL
 
 export const state = () => ({
   posts: [],
+  post: {},
   tags: [],
   menus: {},
 })
@@ -9,6 +10,9 @@ export const state = () => ({
 export const mutations = {
   updatePosts: (state, posts) => {
     state.posts = posts
+  },
+  updatePost: (state, post) => {
+    state.post = post
   },
   updateTags: (state, tags) => {
     state.tags = tags
@@ -92,6 +96,18 @@ export const actions = {
         res.json()
       )
       commit('updateMenus', menus)
+    } catch (err) {
+      // console.log(err)
+    }
+  },
+
+  async getPost({ commit }, slug) {
+    try {
+      const post = await fetch(
+        `${siteURL}/wp-json/wp/v2/posts?slug=${slug}&_embed=1`
+      ).then((res) => res.json())
+
+      commit('updatePost', post)
     } catch (err) {
       // console.log(err)
     }

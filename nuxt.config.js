@@ -64,8 +64,8 @@ export default {
 
   googleFonts: {
     families: {
-      'Open+Sans': true,
-      'Space+Grotesk': true,
+      // 'Open+Sans': true,
+      'Work+Sans': true,
     },
   },
 
@@ -75,7 +75,7 @@ export default {
       lang: 'en',
     },
   },
- server: {
+  server: {
     host: '0.0.0.0',
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
