@@ -5,15 +5,16 @@
       :key="post.id"
       class="flex-1 mb-16 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg"
     >
-      <Post :post="post"></Post>
+      <Content :post="post" :full="false"></Content>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   components: {
-    Post: () => import('~/components/article/read.vue'),
+    Content: () => import('~/components/article/content.vue'),
   },
   data() {
     return {
@@ -22,12 +23,8 @@ export default {
     }
   },
   computed: {
-    posts() {
-      return this.$store.state.posts
-    },
-    tags() {
-      return this.$store.state.tags
-    },
+    ...mapState(['posts', 'tags']),
+   
     sortedPosts() {
       if (!this.posts || !this.posts.length) {
         return []

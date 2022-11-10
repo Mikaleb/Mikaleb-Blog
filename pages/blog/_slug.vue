@@ -19,7 +19,7 @@ export default {
       return this.$store.state.post
     },
   },
-  created() {
+  beforeMount() {
     this.$store.dispatch('getPost', this.slug)
   },
 }

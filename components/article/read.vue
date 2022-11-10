@@ -10,7 +10,7 @@
     />
     <div class="container mx-auto">
       <div v-if="post">
-        <Excerpt :post="post"></Excerpt>
+        <Content :post="post" :full="true"></Content>
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'Article',
   components: {
-    Excerpt: () => import('~/components/article/excerpt.vue'),
+    Content: () => import('~/components/article/content.vue'),
   },
   props: {
     post: {

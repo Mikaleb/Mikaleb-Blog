@@ -24,7 +24,8 @@
     "nuxt": "^2.15.8",
     "path": "^0.12.7",
     "release-it": "^14.11.6",
-    "tarteaucitronjs": "^1.9.4"
+    "tarteaucitronjs": "^1.9.4",
+    "wp-types": "^3.61.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.8",

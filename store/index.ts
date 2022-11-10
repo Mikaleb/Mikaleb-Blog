@@ -1,3 +1,7 @@
+import { NuxtState } from '@nuxt/types/app'
+import { ActionTree } from 'vuex'
+// eslint-disable-next-line camelcase
+import { WP_Post } from 'wp-types'
 const siteURL = process.env.NUXT_ENV_WP_URL
 
 export const state = () => ({
@@ -7,22 +11,26 @@ export const state = () => ({
   menus: {},
 })
 
+export type RootState = ReturnType<typeof state>
+
 export const mutations = {
-  updatePosts: (state, posts) => {
+  // eslint-disable-next-line camelcase
+  updatePosts: (state: NuxtState, posts: WP_Post[]): any => {
     state.posts = posts
   },
-  updatePost: (state, post) => {
+  // eslint-disable-next-line camelcase
+  updatePost: (state: NuxtState, post: WP_Post) => {
     state.post = post
   },
-  updateTags: (state, tags) => {
+  updateTags: (state: NuxtState, tags: any) => {
     state.tags = tags
   },
-  updateMenus: (state, menus) => {
+  updateMenus: (state: NuxtState, menus: any) => {
     state.menus = menus
   },
 }
 
-export const actions = {
+export const actions: ActionTree<RootState, RootState> = {
   async getPosts({ commit }) {
     try {
       let posts = await fetch(
@@ -30,7 +38,7 @@ export const actions = {
       ).then((res) => res.json())
 
       posts = posts
-        .filter((el) => el.status === 'publish')
+        .filter((el: { status: string }) => el.status === 'publish')
         .map(
           ({
             id,
@@ -42,7 +50,7 @@ export const actions = {
             content,
             // eslint-disable-next-line camelcase
             featured_image_src,
-          }) => ({
+          }: any) => ({
             id,
             slug,
             title,
@@ -65,7 +73,7 @@ export const actions = {
       return
     }
 
-    let allTags = state.posts.reduce((acc, item) => {
+    let allTags: any = state.posts.reduce((acc, item: any) => {
       return acc.concat(item.tags)
     }, [])
     allTags = allTags.join()
@@ -75,7 +83,7 @@ export const actions = {
         `${siteURL}/wp-json/wp/v2/tags?page=1&per_page=40&include=${allTags}`
       ).then((res) => res.json())
 
-      tags = tags.map(({ id, name }) => ({
+      tags = tags.map(({ id, name }: any) => ({
         id,
         name,
       }))
@@ -87,7 +95,7 @@ export const actions = {
   },
 
   async getMenus({ state, commit }) {
-    if (state.menus.length) {
+    if (state.menus) {
       return
     }
 
@@ -107,7 +115,7 @@ export const actions = {
         `${siteURL}/wp-json/wp/v2/posts?slug=${slug}&_embed=1`
       ).then((res) => res.json())
 
-      commit('updatePost', post)
+      if (post.length) commit('updatePost', post[0])
     } catch (err) {
       // console.log(err)
     }
