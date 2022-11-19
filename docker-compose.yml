@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 networks:
   web:
@@ -12,19 +12,19 @@ services:
       - ./:/app
       - app_node_modules:/app/node_modules
       - app_dotnuxt:/app/.nuxt
-    
+
     command: [yarn, dev]
     ports:
-      - "8000:3000"
+      - '8000:3000'
     labels:
-      - traefik.http.routers.mikaleb-blog.rule=Host(`mikaleb.com`)
-      - traefik.http.routers.mikaleb-blog.tls=true
-      - traefik.http.routers.mikaleb-blog.tls.certresolver=lets-encrypt
+      - traefik.http.routers.mikaleb-blog-front.rule=Host(`mikaleb.com`)
+      - traefik.http.routers.mikaleb-blog-front.tls=true
+      - traefik.http.routers.mikaleb-blog-front.tls.certresolver=lets-encrypt
       - traefik.port=80
     networks:
       - internal
       - web
 
 volumes:
-    app_node_modules:
-    app_dotnuxt:
+  app_node_modules:
+  app_dotnuxt:
