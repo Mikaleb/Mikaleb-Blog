@@ -49,7 +49,6 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
     '@nuxtjs/google-fonts',
-    'nuxt-compress',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
