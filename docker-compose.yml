@@ -8,6 +8,7 @@ networks:
 
 services:
   mikaleb-blog-front:
+    build: ./mikaleb-blog-front
     volumes:
       - ./:/app
       - app_node_modules:/app/node_modules
