@@ -8,6 +8,11 @@
           : ''
       "
     />
+    <ft-image
+      v-if="post.featured_media"
+      :media-id="post.featured_media"
+      :featured="true"
+    />
     <div class="container mx-auto">
       <div v-if="post">
         <Content :post="post" :full="true"></Content>
@@ -22,6 +27,7 @@ export default Vue.extend({
   name: 'Article',
   components: {
     Content: () => import('~/components/article/content.vue'),
+    FtImage: () => import('~/components/article/ftImage.vue'),
   },
   props: {
     post: {

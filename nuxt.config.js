@@ -49,6 +49,7 @@ export default {
     '@nuxtjs/tailwindcss',
     '@nuxtjs/svg',
     '@nuxtjs/google-fonts',
+    'nuxt-compress',
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -66,6 +67,12 @@ export default {
     families: {
       // 'Open+Sans': true,
       'Work+Sans': true,
+    },
+  },
+
+  optimization: {
+    splitChunks: {
+      maxSize: 300000,
     },
   },
 

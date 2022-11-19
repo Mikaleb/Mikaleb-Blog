@@ -2,7 +2,7 @@ import { NuxtState } from '@nuxt/types/app'
 import { ActionTree } from 'vuex'
 // eslint-disable-next-line camelcase
 import { WP_Post } from 'wp-types'
-const siteURL = process.env.NUXT_ENV_WP_URL
+const siteUrl = process.env.NUXT_ENV_WP_URL
 
 export const state = () => ({
   posts: [],
@@ -34,7 +34,7 @@ export const actions: ActionTree<RootState, RootState> = {
   async getPosts({ commit }) {
     try {
       let posts = await fetch(
-        `${siteURL}/wp-json/wp/v2/posts?page=1&per_page=20&_embed=1`
+        `${siteUrl}/wp-json/wp/v2/posts?page=1&per_page=20&_embed=1`
       ).then((res) => res.json())
 
       posts = posts
@@ -80,7 +80,7 @@ export const actions: ActionTree<RootState, RootState> = {
 
     try {
       let tags = await fetch(
-        `${siteURL}/wp-json/wp/v2/tags?page=1&per_page=40&include=${allTags}`
+        `${siteUrl}/wp-json/wp/v2/tags?page=1&per_page=40&include=${allTags}`
       ).then((res) => res.json())
 
       tags = tags.map(({ id, name }: any) => ({
@@ -100,7 +100,7 @@ export const actions: ActionTree<RootState, RootState> = {
     }
 
     try {
-      const menus = await fetch(`${siteURL}/wp-json/wp/v2/menus`).then((res) =>
+      const menus = await fetch(`${siteUrl}/wp-json/wp/v2/menus`).then((res) =>
         res.json()
       )
       commit('updateMenus', menus)
@@ -112,7 +112,7 @@ export const actions: ActionTree<RootState, RootState> = {
   async getPost({ commit }, slug) {
     try {
       const post = await fetch(
-        `${siteURL}/wp-json/wp/v2/posts?slug=${slug}&_embed=1`
+        `${siteUrl}/wp-json/wp/v2/posts?slug=${slug}&_embed=1`
       ).then((res) => res.json())
 
       if (post.length) commit('updatePost', post[0])

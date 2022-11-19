@@ -1,10 +1,6 @@
 <template>
   <div>
-    <div
-      v-for="post in sortedPosts"
-      :key="post.id"
-      class="flex-1 mb-16 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg"
-    >
+    <div v-for="post in sortedPosts" id="container" :key="post.id" class="">
       <Content :post="post" :full="false"></Content>
     </div>
   </div>
@@ -24,7 +20,7 @@ export default {
   },
   computed: {
     ...mapState(['posts', 'tags']),
-   
+
     sortedPosts() {
       if (!this.posts || !this.posts.length) {
         return []
@@ -55,3 +51,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+#container {
+  @apply flex-1 mb-16 overflow-hidden bg-white rounded-t rounded-b-none shadow-lg p-2;
+}
+</style>
