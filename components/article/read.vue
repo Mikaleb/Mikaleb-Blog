@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div
-      class="container object-cover w-full max-w-6xl mx-auto bg-white rounded"
-      :style="
-        post.featured_image_src
-          ? `background-image: url('${post.featured_image_src.large}');  height: 25vh;`
-          : ''
-      "
-    />
     <ft-image
       v-if="post.featured_media"
       :media-id="post.featured_media"

@@ -42,8 +42,14 @@ export default Vue.extend({
     // eslint-disable-next-line camelcase
     media_src(): string {
       if (this.media) {
-        // @ts-ignore
-        return this.media.media_details.sizes[this.mediaSize].source_url
+        const mediaSizes: any = this.media.media_details
+        // check if object has named property
+        if (
+          Object.prototype.hasOwnProperty.call(mediaSizes.sizes, this.mediaSize)
+        ) {
+          return mediaSizes.sizes[this.mediaSize].source_url
+        }
+        return mediaSizes.sizes.full.source_url
       }
       return ''
     },

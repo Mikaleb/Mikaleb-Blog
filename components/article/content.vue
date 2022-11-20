@@ -1,16 +1,16 @@
 <template>
   <div v-if="post">
-    <h2 class="w-full px-6 text-2xl font-bold text-gray-900">
+    <h2 class="w-full pt-6 text-2xl font-bold text-gray-900">
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <a :href="`blog/${post.slug}`" v-html="postTitle" />
+      <NuxtLink
+        v-html="postTitle"
+        :to="{ name: 'blog-slug', params: { slug: post.slug } }"
+      ></NuxtLink>
     </h2>
-    <small class="w-full px-6 text-xs text-gray-600 md:text-sm">
+    <small class="w-full text-xs text-gray-600 md:text-sm">
       {{ post.date | dateformat }}
     </small>
-    <section
-      class="mb-5 font-serif text-basetext-gray-800"
-      v-html="postContent"
-    />
+    <section id="section" class="text-basetext-gray-800" v-html="postContent" />
   </div>
 </template>
 
@@ -29,11 +29,11 @@ export default Vue.extend({
     },
   },
   computed: {
-    postTitle() {
+    postTitle(): string {
       // @ts-ignore
       return this.post?.title?.rendered || this.post?.title
     },
-    postContent() {
+    postContent(): any {
       if (this.full) {
         // @ts-ignore
         return this.post?.content?.rendered || this.post?.content
@@ -45,3 +45,9 @@ export default Vue.extend({
   methods: {},
 })
 </script>
+
+<style lang="scss" scoped>
+#section {
+  @apply my-6 font-serif;
+}
+</style>

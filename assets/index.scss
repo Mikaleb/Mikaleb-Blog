@@ -1,4 +1,27 @@
 @tailwind base;
+
+@layer base {
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  a {
+    @apply text-mkBlue;
+    &:visited {
+      @apply text-mkBlue-300;
+    }
+  }
+
+  p {
+    @apply text-mkDarkGray;
+  }
+}
+
 @tailwind components;
 @tailwind utilities;
 
@@ -11,35 +34,27 @@ h4,
 h5,
 h6 {
   font-family: 'Work Sans', sans-serif;
+  @apply mt-4 mb-2;
 }
 
 p {
   font-family: 'Work Sans', sans-serif;
-  font-size: 16px;
+  @apply text-base box-border text-mkDarkGray;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  @apply text-mkDarkGray;
 }
 
 body {
   @apply bg-mkGray;
 }
 
-a {
-  color: #279af1 !important;
-  &:visited {
-    color: #23b5d3 !important;
-  }
-}
-
-p {
-  @apply text-mkDarkGray;
-}
-
 blockquote p {
   @apply font-bold;
+}
+
+.container {
+  @apply container w-full md:max-w-3xl mx-auto pt-12 pb-28;
 }
