@@ -1,33 +1,45 @@
-version: '3'
+version: '3.8'
+
+services:
+  app:
+    restart: always
+    image: app
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+  app_prod:
+    restart: always
+    image: app_prod
+    container_name: app_prod
+    build:
+      context: .
+      dockerfile: Prod.Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app_prod
+      - /usr/src/app_prod/node_modules
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nuxt.tls=true
+      - traefik.http.routers.nuxt.tls.certresolver=lets-encrypt
+      - traefik.port=3000
+      - 'traefik.http.routers.nuxt.rule=Host(`aboflow.com`)'
+      - traefik.http.routers.nuxt.entrypoints=websecure
+    env_file:
+      - .env
+    networks:
+      - internal
+      - web
 
 networks:
   web:
     external: true
   internal:
     external: false
-
-services:
-  mikaleb-blog-front:
-    container_name: "mikaleb-blog-front"
-    build: .
-    volumes:
-      - ./:/app
-      - app_node_modules:/app/node_modules
-      - app_dotnuxt:/app/.nuxt
-
-    command: [yarn, dev]
-    ports:
-      - '8000:3000'
-    labels:
-      - traefik.http.routers.mikaleb-blog-front.rule=Host(`mikaleb.com`)
-      - traefik.http.routers.mikaleb-blog-front.tls=true
-      - traefik.http.routers.mikaleb-blog-front.tls.certresolver=lets-encrypt
-      - traefik.port=80
-    networks:
-      - internal
-      - web
-
-volumes:
-  app_node_modules:
-  app_dotnuxt:
-

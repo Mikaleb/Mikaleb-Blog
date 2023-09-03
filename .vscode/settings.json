@@ -1,6 +1,5 @@
 {
-    "files.exclude": {
-        "node_modules": true
-    },
-    "workspace.isHidden": true
+    "i18n-ally.localesPaths": [
+        "src/locales"
+    ]
 }
