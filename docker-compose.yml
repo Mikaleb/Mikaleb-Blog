@@ -9,7 +9,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 5173:5173
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
@@ -17,7 +17,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.app.tls=true
       - traefik.http.routers.app.tls.certresolver=lets-encrypt
-      - traefik.port=3000
+      - traefik.port=5173
       - traefik.http.routers.app.rule=Host(`mikaleb.com`)
       - traefik.http.routers.app.entrypoints=websecure
     env_file:
