@@ -13,24 +13,12 @@ services:
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
-  app_prod:
-    restart: always
-    image: app_prod
-    container_name: app_prod
-    build:
-      context: .
-      dockerfile: Prod.Dockerfile
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/usr/src/app_prod
-      - /usr/src/app_prod/node_modules
     labels:
       - traefik.enable=true
       - traefik.http.routers.nuxt.tls=true
       - traefik.http.routers.nuxt.tls.certresolver=lets-encrypt
       - traefik.port=3000
-      - 'traefik.http.routers.nuxt.rule=Host(`aboflow.com`)'
+      - 'traefik.http.routers.nuxt.rule=Host(`mikaleb.com`)'
       - traefik.http.routers.nuxt.entrypoints=websecure
     env_file:
       - .env
