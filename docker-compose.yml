@@ -30,7 +30,7 @@ services:
       - traefik.http.routers.nuxt.tls=true
       - traefik.http.routers.nuxt.tls.certresolver=lets-encrypt
       - traefik.port=3000
-      - 'traefik.http.routers.nuxt.rule=Host(`aboflow.com`)'
+      - 'traefik.http.routers.nuxt.rule=Host(`mikaleb.com`)'
       - traefik.http.routers.nuxt.entrypoints=websecure
     env_file:
       - .env
