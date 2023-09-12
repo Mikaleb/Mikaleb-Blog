@@ -15,11 +15,11 @@ services:
       - /usr/src/app/node_modules
     labels:
       - traefik.enable=true
-      - traefik.http.routers.nuxt.tls=true
-      - traefik.http.routers.nuxt.tls.certresolver=lets-encrypt
+      - traefik.http.routers.app.tls=true
+      - traefik.http.routers.app.tls.certresolver=lets-encrypt
       - traefik.port=3000
-      - 'traefik.http.routers.nuxt.rule=Host(`mikaleb.com`)'
-      - traefik.http.routers.nuxt.entrypoints=websecure
+      - traefik.http.routers.app.rule=Host(`mikaleb.com`)'
+      - traefik.http.routers.app.entrypoints=websecure
     env_file:
       - .env
     networks:
