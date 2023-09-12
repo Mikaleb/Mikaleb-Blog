@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 
+// @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiTwitter, mdiGithub, mdiLinkedin, mdiThemeLightDark } from '@mdi/js'
 
@@ -43,7 +44,7 @@ const toggleTheme = () => {
             </a>
           </li>
           <li>
-            <a @click="toggleTheme" class="mx-2 mt-4">
+            <a @click="toggleTheme" class="mx-2 hover:cursor-pointer">
               <svg-icon type="mdi" :path="mdiThemeLightDark" :size="size"></svg-icon>
             </a>
           </li>
@@ -61,24 +62,28 @@ const toggleTheme = () => {
 header {
   line-height: 1.5;
   max-height: 100vh;
-  @apply flex items-center p-4;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+  @apply md:flex items-center p-4 sm:block;
 }
 
 nav {
-  @apply flex items-center justify-between align-middle;
+  @apply sm:block md:flex items-center justify-between align-middle;
   width: 100%;
-  text-align: center;
-  text-align: left;
-  font-size: 1rem;
 }
 
 .socials {
   @apply flex items-center;
+
+  & ul {
+    @apply flex items-center sm:only:mt-4;
+
+    & li {
+      &:hover {
+        & a {
+          @apply text-blue-500 transition-all;
+        }
+      }
+    }
+  }
 }
 
 nav a.router-link-exact-active {
@@ -97,6 +102,23 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+.links {
+  @apply font-semibold;
+  & a:hover {
+    @apply text-blue-500 transition-all;
+  }
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+  &:hover {
+    @apply transition-all transform scale-110 text-blue-800;
+
+    fill: blue;
+  }
 }
 
 @media (min-width: 1024px) {
