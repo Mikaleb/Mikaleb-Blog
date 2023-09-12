@@ -18,7 +18,7 @@ services:
       - traefik.http.routers.app.tls=true
       - traefik.http.routers.app.tls.certresolver=lets-encrypt
       - traefik.port=3000
-      - traefik.http.routers.app.rule=Host(`mikaleb.com`)'
+      - traefik.http.routers.app.rule=Host(`mikaleb.com`)
       - traefik.http.routers.app.entrypoints=websecure
     env_file:
       - .env
