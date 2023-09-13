@@ -1,25 +1,25 @@
 version: '3.8'
 
 services:
-  app:
+  mikaleb_front:
     restart: always
-    image: app
-    container_name: app
+    image: mikaleb_front
+    container_name: mikaleb_front
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 5173:5173
+      - 3000:3000
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
     labels:
       - traefik.enable=true
-      - traefik.http.routers.app.tls=true
-      - traefik.http.routers.app.tls.certresolver=lets-encrypt
-      - traefik.port=5173
-      - traefik.http.routers.app.rule=Host(`mikaleb.com`)
-      - traefik.http.routers.app.entrypoints=websecure
+      - traefik.http.routers.mikaleb_front.tls=true
+      - traefik.http.routers.mikaleb_front.tls.certresolver=lets-encrypt
+      - traefik.port=3000
+      - traefik.http.routers.mikaleb_front.rule=Host(`mikaleb.com`)
+      - traefik.http.routers.mikaleb_front.entrypoints=websecure
     env_file:
       - .env
     networks:
