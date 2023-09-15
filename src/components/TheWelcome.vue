@@ -40,12 +40,13 @@ const techs: Tech[] = [
 </script>
 
 <template>
-  <div class="p-4 dark:bg-slate-800 dark:text-white">
+  <div class="p-4 dark:bg-slate-800 text-stone-900 dark:text-yellow-50">
     <!-- Contact information, including relevant social media accounts -->
-
-    <span id="hi">{{ $t('hi') }}</span>
-    <span id="who">{{ $t('who') }}</span>
-    <span id="tech">{{ $t('tech') }}</span>
+    <div class="intro">
+      <span id="hi">{{ $t('hi') }}</span>
+      <span id="who">{{ $t('who') }}</span>
+      <span id="tech">{{ $t('tech') }}</span>
+    </div>
     <div id="tech">
       <template v-for="tech in techs" :key="tech.slug">
         <span>{{ tech.name }}</span>
@@ -55,9 +56,18 @@ const techs: Tech[] = [
 </template>
 
 <style scoped lang="scss">
-#tech {
+.intro {
+  @apply flex flex-col mb-4;
   span {
-    @apply text-2xl pl-2;
+    @apply text-2xl;
+  }
+}
+#tech {
+  @apply flex text-stone-900 dark:text-yellow-50;
+  flex-wrap: wrap;
+  span {
+    @apply text-xl pl-2 mt-2;
+    flex: 1 0 21%; /* explanation below */
   }
 }
 </style>

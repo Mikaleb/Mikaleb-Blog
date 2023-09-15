@@ -10,6 +10,8 @@ import fr from '@/locales/fr.json'
 import App from './App.vue'
 import router from './router'
 
+import { createHead } from '@unhead/vue'
+
 // Type-define 'en-US' as the master schema for the resource
 type MessageSchema = typeof en
 
@@ -25,6 +27,8 @@ const i18n = createI18n<[MessageSchema], 'en' | 'fr'>({
 })
 
 const app = createApp(App)
+
+const head = createHead()
 
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
 if (
@@ -45,7 +49,5 @@ localStorage.theme = 'dark'
 // Whenever the user explicitly chooses to respect the OS preference
 localStorage.removeItem('theme')
 
-app.use(createPinia())
-app.use(router)
-app.use(i18n)
+app.use(createPinia()).use(router).use(i18n).use(head)
 app.mount('#app')
