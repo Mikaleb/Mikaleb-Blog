@@ -40,7 +40,7 @@ const techs: Tech[] = [
 </script>
 
 <template>
-  <div class="p-4 dark:bg-slate-800 text-stone-900 dark:text-yellow-50">
+  <div class="text-stone-900 dark:text-yellow-50">
     <!-- Contact information, including relevant social media accounts -->
     <div class="intro">
       <span id="hi">{{ $t('hi') }}</span>

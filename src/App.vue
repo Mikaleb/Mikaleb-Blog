@@ -4,7 +4,7 @@ import TheMenu from '@/components/TheMenu.vue'
 </script>
 
 <template>
-  <header class="dark:bg-slate-800 dark:text-yellow-50">
+  <header>
     <img
       alt="logo"
       class="logo dark:block hidden"
@@ -13,10 +13,12 @@ import TheMenu from '@/components/TheMenu.vue'
       height="125"
     />
     <img alt="logo" class="logo dark:hidden" src="@/assets/logo.svg" width="125" height="125" />
-    <TheMenu />
+    <div class="fixed inset-x-0 max-w-2xl mx-auto z-50 top-20">
+      <TheMenu />
+    </div>
   </header>
 
-  <div>
+  <div class="mt-12 p-8">
     <RouterView />
   </div>
 </template>
@@ -24,16 +26,14 @@ import TheMenu from '@/components/TheMenu.vue'
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
-  @apply md:flex items-center p-4 sm:block;
+  max-height: 10vh;
+  @apply md:flex items-center p-8 sm:block;
 }
 
 .logo {
   margin: 0 auto 2rem;
   &:hover {
-    @apply transition-all transform scale-110 text-blue-800;
-
-    fill: blue;
+    @apply transition-all transform scale-110;
   }
 }
 
