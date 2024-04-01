@@ -23,6 +23,7 @@
     "@sendgrid/client": "^8.1.1",
     "@sendgrid/mail": "^8.1.1",
     "@unhead/vue": "^1.8.20",
+    "@vueuse/core": "^10.9.0",
     "@vueuse/motion": "^2.1.0",
     "clsx": "^2.1.0",
     "pinia": "^2.1.7",

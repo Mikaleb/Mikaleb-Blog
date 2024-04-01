@@ -1,11 +1,4 @@
 <script setup lang="ts">
-// import WelcomeItem from './WelcomeItem.vue'
-// import DocumentationIcon from './icons/IconDocumentation.vue'
-// import ToolingIcon from './icons/IconTooling.vue'
-// import EcosystemIcon from './icons/IconEcosystem.vue'
-// import CommunityIcon from './icons/IconCommunity.vue'
-// import SupportIcon from './icons/IconSupport.vue'
-
 interface Tech {
   slug: string
   name: string
@@ -40,13 +33,27 @@ const techs: Tech[] = [
 </script>
 
 <template>
-  <div class="text-stone-900 dark:text-yellow-50">
-    <!-- Contact information, including relevant social media accounts -->
-    <div class="intro">
-      <span id="hi">{{ $t('hi') }}</span>
-      <span id="who">{{ $t('who') }}</span>
-      <span id="tech">{{ $t('tech') }}</span>
+  <div class="flex">
+    <div class="w-1/2">
+      <div id="hi">
+        <p>{{ $t('hi') }}</p>
+      </div>
+      <div id="who">
+        <p>{{ $t('who') }}</p>
+      </div>
+      <div id="tech">
+        <p>{{ $t('tech') }}</p>
+      </div>
     </div>
+    <div class="w-1/2">
+      <span class="longer">{{ $t('longer.intro') }}</span>
+      <span class="longer">{{ $t('longer.school') }}</span>
+    </div>
+  </div>
+
+  <div class="text-stone-900 dark:text-yellow-50">
+    <h2>{{ $t('skills') }}</h2>
+
     <div id="tech">
       <template v-for="tech in techs" :key="tech.slug">
         <span>{{ tech.name }}</span>
@@ -56,12 +63,15 @@ const techs: Tech[] = [
 </template>
 
 <style scoped lang="scss">
-.intro {
-  @apply flex flex-col mb-4;
-  span {
-    @apply text-2xl;
-  }
+#hi {
+  @apply text-3xl;
+  font-family: 'GeneralSans-Bold', cursive;
 }
+
+.longer {
+  @apply text-lg pr-2;
+}
+
 #tech {
   @apply flex text-stone-900 dark:text-yellow-50;
   flex-wrap: wrap;

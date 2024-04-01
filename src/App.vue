@@ -1,18 +1,11 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import TheMenu from '@/components/TheMenu.vue'
+import LightSwitch from '@/components/LightSwitch.vue'
 </script>
 
 <template>
   <header>
-    <img
-      alt="logo"
-      class="logo dark:block hidden"
-      src="@/assets/logo_light.svg"
-      width="125"
-      height="125"
-    />
-    <img alt="logo" class="logo dark:hidden" src="@/assets/logo.svg" width="125" height="125" />
     <div class="fixed inset-x-0 max-w-2xl mx-auto z-50 top-20">
       <TheMenu />
     </div>
@@ -20,6 +13,10 @@ import TheMenu from '@/components/TheMenu.vue'
 
   <div class="mt-12 p-8">
     <RouterView />
+  </div>
+
+  <div class="switch">
+    <Light-Switch />
   </div>
 </template>
 
