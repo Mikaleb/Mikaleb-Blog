@@ -30,10 +30,18 @@ const techs: Tech[] = [
     name: 'Cypress'
   }
 ]
+
+const goToGithub = () => {
+  window.open('https://github.com/Mikaleb', '_blank')
+}
+
+const goToLinkedIn = () => {
+  window.open('https://www.linkedin.com/in/mikalebeau/', '_blank')
+}
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex container">
     <div class="w-1/2">
       <div id="hi">
         <p>{{ $t('hi') }}</p>
@@ -48,10 +56,19 @@ const techs: Tech[] = [
     <div class="w-1/2">
       <span class="longer">{{ $t('longer.intro') }}</span>
       <span class="longer">{{ $t('longer.school') }}</span>
+
+      <div class="mt-6">
+        <button @click="goToGithub" class="btn btn-primary">
+          {{ $t('goToGithub') }}
+        </button>
+        <button @click="goToLinkedIn" class="btn btn-secondary ml-4">
+          {{ $t('goToLinkedin') }}
+        </button>
+      </div>
     </div>
   </div>
 
-  <div class="text-stone-900 dark:text-yellow-50">
+  <div class="container mt-8 text-stone-900 dark:text-yellow-50">
     <h2>{{ $t('skills') }}</h2>
 
     <div id="tech">
@@ -64,8 +81,11 @@ const techs: Tech[] = [
 
 <style scoped lang="scss">
 #hi {
-  @apply text-3xl;
-  font-family: 'GeneralSans-Bold', cursive;
+  @apply text-3xl font-bold;
+}
+
+#who {
+  @apply text-2xl mt-4 font-semibold;
 }
 
 .longer {
@@ -73,11 +93,6 @@ const techs: Tech[] = [
 }
 
 #tech {
-  @apply flex text-stone-900 dark:text-yellow-50;
-  flex-wrap: wrap;
-  span {
-    @apply text-xl pl-2 mt-2;
-    flex: 1 0 21%; /* explanation below */
-  }
+  @apply flex text-stone-900 dark:text-yellow-50 flex-wrap text-xl;
 }
 </style>

@@ -5,8 +5,8 @@ import LightSwitch from '@/components/LightSwitch.vue'
 </script>
 
 <template>
-  <header>
-    <div class="fixed inset-x-0 max-w-2xl mx-auto z-50 top-20">
+  <header class="flex">
+    <div class="menu container">
       <TheMenu />
     </div>
   </header>
@@ -25,6 +25,10 @@ header {
   line-height: 1.5;
   max-height: 10vh;
   @apply md:flex items-center p-8 sm:block;
+}
+
+.menu {
+  @apply fixed inset-x-0 mx-auto z-50 top-20;
 }
 
 .logo {

@@ -88,10 +88,13 @@ nav {
 
   a {
     @apply font-semibold text-lg  inline-block text-charcoal px-2;
-  }
 
-  a:first-of-type {
-    border: 0;
+    &:first-of-type {
+      border: 0;
+    }
+    &:hover {
+      @apply text-aero;
+    }
   }
 }
 
@@ -103,13 +106,17 @@ nav {
 }
 
 .socials {
-  @apply flex items-center;
+  @apply flex items-center text-aero-100 pl-6;
 
   & ul {
     @apply flex items-center;
 
+    & li {
+      @apply mr-2;
+    }
+
     & li:hover a {
-      @apply text-blue-500 transition-all;
+      @apply text-aero transition-all;
     }
   }
 }
