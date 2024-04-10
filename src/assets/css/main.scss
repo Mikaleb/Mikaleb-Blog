@@ -17,3 +17,16 @@ body {
   @apply dark:bg-charcoal bg-white;
   font-family: 'GeneralSans-Regular', sans-serif;
 }
+
+.centered {
+  @apply flex items-center justify-center align-middle;
+}
+
+#app {
+  @apply min-h-screen;
+
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
+}

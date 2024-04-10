@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import TheMenu from '@/components/TheMenu.vue'
-import LightSwitch from '@/components/LightSwitch.vue'
 </script>
 
 <template>
@@ -11,12 +10,8 @@ import LightSwitch from '@/components/LightSwitch.vue'
     </div>
   </header>
 
-  <div class="mt-12 p-8">
+  <div class="mt-16 p-8">
     <RouterView />
-  </div>
-
-  <div class="switch">
-    <Light-Switch />
   </div>
 </template>
 
@@ -28,7 +23,7 @@ header {
 }
 
 .menu {
-  @apply fixed inset-x-0 mx-auto z-50 top-20;
+  @apply fixed inset-x-0 mx-auto z-50 top-16;
 }
 
 .logo {

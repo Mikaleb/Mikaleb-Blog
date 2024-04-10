@@ -18,12 +18,11 @@
       <div id="links">
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/portfolio">Portfolio</RouterLink>
-        <RouterLink to="/about">About Me</RouterLink>
         <RouterLink to="/contact">Contact</RouterLink>
       </div>
     </div>
     <div class="nav--second">
-      <div class="socials">
+      <div class="socials centered">
         <ul>
           <li>
             <a href="https://twitter.com/MikalebCom">
@@ -41,6 +40,9 @@
             </a>
           </li>
         </ul>
+        <div class="switch ml-6">
+          <Light-Switch />
+        </div>
       </div>
     </div>
   </nav>
@@ -48,6 +50,7 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import LightSwitch from '@/components/LightSwitch.vue'
 
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
@@ -58,15 +61,16 @@ const size = 32
 
 <style scoped lang="scss">
 nav {
-  @apply transform rounded-full border  bg-white flex justify-center space-x-4 p-4;
+  @apply transform rounded-full border flex justify-center space-x-4 p-4;
 
   // border :
   @apply border-charcoal/[0.5] dark:border-white/[0.5];
 
-  @apply dark:bg-black bg-opacity-50 dark:bg-opacity-50;
+  // background :
+  @apply bg-white bg-opacity-90 dark:bg-black dark:bg-opacity-50;
 
   // mobile : bottom centered, 80% width
-  @apply fixed bottom-6 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  @apply fixed bottom-6;
 
   // tablet and above
   @apply lg:relative;
@@ -83,11 +87,11 @@ nav {
   @apply ml-8;
 
   a.router-link-exact-active {
-    @apply text-aero;
+    @apply text-aero dark:text-aero;
   }
 
   a {
-    @apply font-semibold text-lg  inline-block text-charcoal px-2;
+    @apply font-semibold text-lg  inline-block text-charcoal dark:text-white px-2;
 
     &:first-of-type {
       border: 0;
@@ -106,17 +110,16 @@ nav {
 }
 
 .socials {
-  @apply flex items-center text-aero-100 pl-6;
+  @apply flex items-center text-aero-100 dark:text-white pl-6;
 
   & ul {
     @apply flex items-center;
 
     & li {
       @apply mr-2;
-    }
-
-    & li:hover a {
-      @apply text-aero transition-all;
+      &:hover a {
+        @apply text-aero  transition-all;
+      }
     }
   }
 }

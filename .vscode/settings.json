@@ -1,5 +1,7 @@
 {
-    "i18n-ally.localesPaths": [
-        "src/locales"
-    ]
+  "i18n-ally.localesPaths": ["src/locales"],
+  "i18n-ally.enabledFrameworks": ["vue"],
+  "i18n-ally.enabledParsers": ["json", "yaml"],
+  "i18n-ally.dirStructure": "auto",
+  "i18n-ally.parserOptions": {}
 }

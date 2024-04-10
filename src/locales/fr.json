@@ -1,12 +1,12 @@
 {
-  "hi": "Hi I'm Mikaleb",
-  "who": "I'm a front-end developer",
-  "tech": "I build websites and web applications using modern web technologies",
+  "hi": "Salut, je suis Mikaleb",
+  "who": "Je suis un développeur web front-end VueJS / Typescript",
+  "tech": "Je construis des sites web et des applications web en utilisant les technologies web modernes",
   "longer": {
-    "intro": "Since 2009 I've been experimenting with CSS and HTML, sketching startup ideas and working for start-ups, agencies and big companies. The fuel behind all this is my passion for creating beautiful and functional tools using tech.",
-    "school": "I have a master's degree in Computer Science as a Designer developer of digital solutions."
+    "intro": "Depuis 2009, j'expérimente avec CSS et HTML, je dessine des idées de start-up et je travaille pour des start-ups, des agences et de grandes entreprises. Le carburant derrière tout cela est ma passion pour la création d'outils beaux et fonctionnels en utilisant la technologie.",
+    "school": "J'ai un master en informatique en tant que concepteur développeur de solutions numériques."
   },
   "skills": "Compétences",
-  "goToGithub": "Go to my GitHub",
-  "goToLinkedin": "Go to my LinkedIn"
+  "goToGithub": "GitHub",
+  "goToLinkedin": "LinkedIn"
 }
