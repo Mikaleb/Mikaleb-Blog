@@ -75,6 +75,9 @@ nav {
   // tablet and above
   @apply lg:relative;
   @apply bottom-8;
+
+  backdrop-filter: blur(5.4px);
+  -webkit-backdrop-filter: blur(5.4px);
 }
 
 .nav {

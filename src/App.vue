@@ -10,9 +10,10 @@ import TheMenu from '@/components/TheMenu.vue'
     </div>
   </header>
 
-  <div class="mt-16 p-8">
+  <div class="lg:mt-16 md:p-8 pt-0 p-4">
     <RouterView />
   </div>
+  <footer class="p-20 lg:p-0"></footer>
 </template>
 
 <style scoped>
