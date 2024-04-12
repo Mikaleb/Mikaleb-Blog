@@ -24,7 +24,7 @@ header {
 }
 
 .menu {
-  @apply fixed inset-x-0 mx-auto z-50 top-16;
+  @apply fixed inset-x-0 mx-auto z-10 top-16;
 }
 
 .logo {

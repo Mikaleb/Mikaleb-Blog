@@ -1,9 +1,6 @@
 <script lang="ts" setup>
 import TimelineItem from '@/components/Portfolio/Element.vue'
 
-const images = import.meta.glob('@/assets/images/portfolio/medicalib/*.png')
-console.debug('🚀 ~ images:', images)
-
 import { type Item } from '@/types/portfolio'
 
 const timelineItems: Item[] = [
@@ -29,7 +26,28 @@ const timelineItems: Item[] = [
       'AWS',
       'Terraform'
     ],
-    screenshots: [images]
+    screenshots: [
+      {
+        src: '1.png',
+        alt: 'Medicalib',
+        caption: 'Medicalib care selection'
+      },
+      {
+        src: '3.png',
+        alt: 'Medicalib',
+        caption: 'Admin CPTS'
+      },
+      {
+        src: '4.png',
+        alt: 'Medicalib',
+        caption: 'Admin activities'
+      },
+      {
+        src: '5.png',
+        alt: 'Medicalib',
+        caption: 'Admin activities'
+      }
+    ]
   },
   {
     date: 'January 2021 - December 2022',

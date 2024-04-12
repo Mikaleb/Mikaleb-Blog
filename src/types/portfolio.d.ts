@@ -7,11 +7,11 @@ export type Item = {
   link: string | null
   isFirst?: boolean
   skills?: string[]
-  screenshots?: [
-    {
-      src: string
-      alt: string
-      caption: string
-    }
-  ]
+  screenshots?: Screenshot[]
+}
+
+export type Screenshot = {
+  src: string
+  caption: string
+  alt: string
 }
