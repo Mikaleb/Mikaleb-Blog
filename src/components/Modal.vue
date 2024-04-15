@@ -23,9 +23,17 @@
 
 <script lang="ts" setup>
 import { onKeyStroke } from '@vueuse/core'
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'prev', 'next'])
 
 onKeyStroke('Escape', (e) => {
   emit('close')
+})
+
+onKeyStroke(['a', 'A', 'ArrowLeft'], (e) => {
+  emit('prev')
+})
+
+onKeyStroke(['d', 'D', 'ArrowRight'], (e) => {
+  emit('next')
 })
 </script>

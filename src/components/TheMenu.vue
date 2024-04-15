@@ -16,9 +16,12 @@
         height="100"
       />
       <div id="links">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/portfolio">Portfolio</RouterLink>
-        <RouterLink to="/contact">Contact</RouterLink>
+        <RouterLink to="/">{{ $t('home') }}</RouterLink>
+        <a @click="scrollToSkills" class="router-link hover:cursor-pointer">{{ $t('skills') }}</a>
+        <a @click="scrollToPortfolio" class="router-link hover:cursor-pointer">{{
+          $t('portfolio')
+        }}</a>
+        <a @click="scrollToContact" class="router-link hover:cursor-pointer">{{ $t('contact') }}</a>
       </div>
     </div>
     <div class="nav--second">
@@ -51,12 +54,30 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import LightSwitch from '@/components/LightSwitch.vue'
-
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiTwitter, mdiGithub, mdiLinkedin } from '@mdi/js'
 
 const size = 32
+
+// find by ID
+
+const scrollToSkills = () => {
+  const skills = document.getElementById('skills')
+  console.debug('🚀 ~ scrollToSkills ~ skills:', skills)
+  if (!skills) return
+  skills.scrollIntoView({ behavior: 'smooth' })
+}
+const scrollToPortfolio = () => {
+  const portfolio = document.getElementById('portfolio')
+  if (!portfolio) return
+  portfolio.scrollIntoView({ behavior: 'smooth' })
+}
+const scrollToContact = () => {
+  const contact = document.getElementById('contact')
+  if (!contact) return
+  contact.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <style scoped lang="scss">
@@ -84,6 +105,9 @@ nav {
   &--main {
     @apply flex items-center justify-between;
   }
+  &--second {
+    @apply flex items-center justify-between;
+  }
 }
 
 #links {
@@ -95,6 +119,7 @@ nav {
 
   a {
     @apply font-semibold text-lg  inline-block text-charcoal dark:text-white px-2;
+    @apply transition-all duration-300 ease-in-out;
 
     &:first-of-type {
       border: 0;

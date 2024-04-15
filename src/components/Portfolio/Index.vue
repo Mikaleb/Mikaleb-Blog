@@ -11,7 +11,7 @@ const timelineItems: Item[] = [
     contractType: 'CDI',
     description:
       'Creating and implementing a Design System that unifies the different iterations and implementations of front-ends across multiple internal and external products.',
-    link: null,
+    link: 'https://www.medicalib.fr/',
     isFirst: true,
     skills: [
       'Vue',
@@ -60,7 +60,7 @@ const timelineItems: Item[] = [
 <li> Creation of UI/UX reports</li>
 <li> Implementation of Typescript, Tailwind
   `,
-    link: null,
+    link: 'https://www.datananas.com/',
     skills: [
       'Javascript',
       'Typescript',
@@ -74,12 +74,34 @@ const timelineItems: Item[] = [
       'Node.js',
       'UI/UX',
       'DOM Manipulation'
+    ],
+    screenshots: [
+      {
+        src: '1.png',
+        alt: 'Datananas',
+        caption: 'Datananas'
+      },
+      {
+        src: '2.png',
+        alt: 'Datananas',
+        caption: 'Datananas'
+      },
+      {
+        src: '3.png',
+        alt: 'Datananas',
+        caption: 'Datananas'
+      },
+      {
+        src: '8.png',
+        alt: 'Datananas',
+        caption: 'Datananas'
+      }
     ]
   },
   {
     date: 'Nov. 2019 - March 2020',
     title: 'Front-end web developer VueJS',
-    link: null,
+    link: 'https://www.runview.fr/',
     company: 'ABBD',
     contractType: 'CDI',
     description: `Creating a front-end dashboard of data utilizing Javascript, Typescript, Vue, Nuxt, Jest, Docker, Git, HTML5, CSS3 and SASS`,
@@ -101,17 +123,24 @@ const timelineItems: Item[] = [
     title: 'Developer Full Stack',
     company: 'Ayctor',
     contractType: 'CDI',
-    link: null,
+    link: 'https://ayctor.com/',
     isFirst: false,
     description: `Laravel back-end developer, design and VueJS integrator`,
-    skills: ['Javascript', 'Laravel', 'VueJS', 'API', 'Mailchimp', 'SCSS']
+    skills: ['Javascript', 'Laravel', 'VueJS', 'API', 'Mailchimp', 'SCSS'],
+    screenshots: [
+      {
+        src: '1.png',
+        alt: 'Ayctor',
+        caption: 'Ayctor'
+      }
+    ]
   },
   {
     date: 'sept. 2018 - nov. 2018',
     title: 'Developer web',
-    company: 'KOBALTT',
+    company: 'Kobaltt',
     contractType: 'CDD',
-    link: null,
+    link: 'https://www.linkedin.com/feed/update/urn:li:activity:7158516192297512961/',
     isFirst: false,
     description: `Laravel back-end developer, design and VueJS integrator`,
     skills: ['Laravel', 'Vue', 'Firestore', 'Docker']
@@ -121,7 +150,7 @@ const timelineItems: Item[] = [
     title: 'Developer Full Stack',
     company: 'Softia',
     contractType: 'Alternance',
-    link: null,
+    link: 'https://www.softia.fr/fr',
     description: `Laravel back-end developer, design and VueJS integrator`,
     skills: [
       'PHP5',

@@ -7,30 +7,18 @@
       <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{
         date
       }}</time>
+      <span class="text-gray-400 dark:text-gray-500">
+        <a v-if="link" :href="link" target="_blank" class="link font-medium mb-4 ml-2">
+          {{ company }}
+        </a>
+        <span v-else>{{ company }}</span>
+      </span>
       <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ title }}</h3>
-      <span class="text-charcoal dark:text-charcoal-900">{{ company }}</span>
+
       <p
         class="mb-4 mt-2 text-base font-normal text-gray-500 dark:text-gray-400"
         v-html="description"
       ></p>
-      <a v-if="link" :href="link" class="link font-medium">
-        Learn more
-        <svg
-          class="w-3 h-3 ms-2 rtl:rotate-180"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 10"
-        >
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M1 5h12m0 0L9 1m4 4L9 9"
-          ></path>
-        </svg>
-      </a>
 
       <div class="flex-wrap text-wrap flex gap-2 gap-y-3">
         <template v-for="skill in skills" :key="skill">
@@ -43,21 +31,26 @@
     </div>
 
     <div class="experience-images--container">
-      <img
-        v-for="(s, key) in screenshots"
-        :key="key"
-        class="experience-images--item"
-        :src="'/assets/portfolio/' + company.toLowerCase() + '/' + s.src"
-        :alt="s.alt"
-        @click="openModal(s)"
-      />
+      <div v-for="(s, key) in screenshots" :key="key" class="flex align-center items-center">
+        <img
+          class="experience-images--item"
+          :src="'/assets/portfolio/' + company.toLowerCase() + '/' + s.src"
+          :alt="s.alt"
+          @click="openModal(s, key)"
+        />
+      </div>
+
       <Transition name="fade">
-        <modal v-if="isModalOpen" @close="isModalOpen = false">
+        <modal
+          v-if="isModalOpen"
+          @close="isModalOpen = false"
+          @prev="changeModalScreenshot('prev')"
+          @next="changeModalScreenshot('next')"
+        >
           <template v-if="modalScreenshot">
             <img
               :src="'/assets/portfolio/' + company.toLowerCase() + '/' + modalScreenshot.src"
               :alt="modalScreenshot.alt"
-              @click="openModal(s)"
             />
           </template>
         </modal>
@@ -80,18 +73,29 @@ const props = defineProps({
 
 const isModalOpen = ref(false)
 const modalScreenshot = ref<Screenshot | null>(null)
+const modalIndex = ref(0)
 
 const { date, title, description, link, company, skills, screenshots } = props.item
 
-const openModal = (screenshot: Screenshot) => {
+const openModal = (screenshot: Screenshot, key: number) => {
   modalScreenshot.value = screenshot
+  modalIndex.value = key
   isModalOpen.value = true
+}
+
+const changeModalScreenshot = (direction: 'prev' | 'next') => {
+  const nextIndex = direction === 'prev' ? modalIndex.value - 1 : modalIndex.value + 1
+  if (!screenshots) return
+  if (nextIndex >= 0 && nextIndex < screenshots.length) {
+    modalScreenshot.value = screenshots[nextIndex]
+    modalIndex.value = nextIndex
+  }
 }
 </script>
 
 <style scoped lang="scss">
 a.link {
-  @apply inline-flex items-center px-4 py-2 text-sm  text-charcoal bg-white border border-gray-200 rounded-lg;
+  @apply inline-flex items-center p-2 text-sm  text-gray-400 dark:text-gray-500 bg-white  border-gray-200 rounded-lg transition-all duration-300 ease-in-out;
   @apply hover:bg-gray-100 hover:text-aero;
   @apply focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-aero-400;
   @apply dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700;
@@ -103,8 +107,8 @@ a.link {
     @apply flex flex-wrap gap-2 mt-4 w-1/3 justify-center;
   }
   &--item {
-    @apply h-24 object-cover rounded-lg;
-    @apply shadow hover:cursor-pointer;
+    @apply max-w-24 md:max-w-40 2xl:max-w-56 object-cover rounded-lg transition-all duration-300 ease-in-out;
+    @apply shadow hover:cursor-pointer hover:shadow-lg hover:scale-105;
   }
 }
 

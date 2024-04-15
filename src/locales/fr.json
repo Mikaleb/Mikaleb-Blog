@@ -9,5 +9,8 @@
   "skills": "Compétences",
   "portfolio": "Portfolio",
   "goToGithub": "GitHub",
-  "goToLinkedin": "LinkedIn"
+  "goToLinkedin": "LinkedIn",
+  "home": "Accueil",
+  "contact": "Contact",
+  "learn-more": "Learn more"
 }

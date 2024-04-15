@@ -18,7 +18,7 @@ const goToLinkedIn = () => {
 </script>
 
 <template>
-  <div class="grid grid-cols-1 md:grid-cols-2 container gap-8 overflow-auto">
+  <section class="grid grid-cols-1 md:grid-cols-2 container gap-8 overflow-auto">
     <div>
       <div id="hi">
         <p class="font-bold">{{ $t('hi') }}</p>
@@ -48,14 +48,24 @@ const goToLinkedIn = () => {
         </button>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="container mt-16 text-stone-900 dark:text-yellow-50">
+  <section class="container mt-16" id="skills">
     <skills-index></skills-index>
-  </div>
-  <div class="container mt-16 text-stone-900 dark:text-yellow-50">
+  </section>
+  <section class="container mt-16" id="portfolio">
     <portfolio-index></portfolio-index>
-  </div>
+  </section>
+  <section class="container mt-16" id="contact">
+    <div class="bg-gray-100 p-8 rounded-lg dark:bg-charcoal-400">
+      <h2 class="text-2xl font-semibold mb-4">{{ $t('contact') }}</h2>
+      <a
+        class="text-lg mt-4 hover:text-aero transition-all hover:font-bold"
+        href="mailto:mikaleb@live.fr"
+        >📧 mikaleb[at]live[dot]fr</a
+      >
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
