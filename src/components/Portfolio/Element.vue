@@ -60,7 +60,7 @@
 </template>
 
 <script lang="ts" setup>
-import { type Item, type Screenshot } from '@/types/portfolio'
+import { type Item, type Screenshot } from '@/main'
 import { defineProps, ref } from 'vue'
 import Modal from '@/components/Modal.vue'
 

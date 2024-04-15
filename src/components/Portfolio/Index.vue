@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import TimelineItem from '@/components/Portfolio/Element.vue'
 
-import { type Item } from '@/types/portfolio'
+import { type Item } from '@/main'
 
 const timelineItems: Item[] = [
   {
