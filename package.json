@@ -13,7 +13,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
     "tailwind": "npx tailwindcss -i ./src/assets/main.scss -o ./dist/output.css --watch",
-    "release": "release-it"
+    "release": "release-it",
+    "serve": "vite serve"
   },
   "dependencies": {
     "@jamescoyle/vue-icon": "^0.1.2",
