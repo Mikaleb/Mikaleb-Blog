@@ -3,10 +3,10 @@
     <div class="element--indicator"></div>
     <div class="element--container">
       <div class="md:w-2/3 w-full">
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{{
+        <time class="mb-1 text-sm font-normal leading-none text-charcoal-500 dark:text-gray-500">{{
           date
         }}</time>
-        <span class="text-gray-400 dark:text-gray-500">
+        <span class="text-charcoal-500 dark:text-gray-500">
           <a v-if="link" :href="link" target="_blank" class="link font-medium mb-4 ml-2">
             {{ company }}
           </a>
@@ -22,7 +22,7 @@
         <div class="flex-wrap text-wrap flex gap-2 gap-y-3">
           <template v-for="skill in skills" :key="skill">
             <span
-              class="bg-charcoal-900 text-charcoal-500 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-aero-100 dark:text-aero"
+              class="bg-charcoal-900 text-charcoal-500 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-aero-200 dark:text-aero"
               >{{ skill }}</span
             >
           </template>
@@ -35,7 +35,7 @@
             class="experience-images--item"
             :src="'/assets/portfolio/' + company.toLowerCase() + '/' + s.src"
             :alt="s.alt"
-            @click="openModal(s, key)"
+            @click="isSmallScreen ? openImage(s, key) : openModal(s, key)"
           />
         </div>
 
@@ -63,6 +63,7 @@
 import { type Item, type Screenshot } from '@/main'
 import { defineProps, ref } from 'vue'
 import Modal from '@/components/Modal.vue'
+import { useMediaQuery } from '@vueuse/core'
 
 const props = defineProps({
   item: {
@@ -75,12 +76,20 @@ const isModalOpen = ref(false)
 const modalScreenshot = ref<Screenshot | null>(null)
 const modalIndex = ref(0)
 
+const isSmallScreen = useMediaQuery('(max-width: 640px)')
+
 const { date, title, description, link, company, skills, screenshots } = props.item
 
 const openModal = (screenshot: Screenshot, key: number) => {
   modalScreenshot.value = screenshot
   modalIndex.value = key
   isModalOpen.value = true
+}
+const openImage = (screenshot: Screenshot, key: number) => {
+  window.open(`/assets/portfolio/${company.toLowerCase()}/${screenshot.src}`, '_blank')
+  // modalScreenshot.value = screenshot
+  // modalIndex.value = key
+  // isModalOpen.value = true
 }
 
 const changeModalScreenshot = (direction: 'prev' | 'next') => {
@@ -105,12 +114,11 @@ const changeModalScreenshot = (direction: 'prev' | 'next') => {
 }
 
 a.link {
-  @apply inline-flex items-center p-2 text-sm  text-gray-400 dark:text-gray-500 bg-white  border-gray-200 rounded-lg transition-all duration-300 ease-in-out;
+  @apply inline-flex items-center p-2 text-sm  text-charcoal-500 dark:text-gray-500 bg-white  border-gray-200 rounded-lg transition-all duration-300 ease-in-out;
   @apply hover:bg-gray-100 hover:text-aero;
   @apply focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-aero-400;
   @apply dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700;
 }
-/* Add any additional styles for the timeline item here */
 
 .experience-images {
   &--container {

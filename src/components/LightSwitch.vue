@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="toggleTheme()" class="btn">
+    <button @click="toggleTheme()" class="btn" aria-label="toggleLight">
       <svg-icon type="mdi" :path="isDark ? mdiLightbulbOn10 : mdiLightbulb" size="24"></svg-icon>
     </button>
   </div>

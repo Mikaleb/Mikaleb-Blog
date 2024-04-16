@@ -46,7 +46,7 @@ const gradientBackground = computed(() => {
 
 <style lang="scss" scoped>
 #bg {
-  @apply bg-gradient-to-tr from-charcoal to-aero-300;
+  @apply bg-gradient-to-tr from-aero-100 to-aero;
   @apply min-h-12 min-w-12 rounded-2xl;
   @apply absolute inset-0;
   @apply transition-all duration-500 ease-in-out;

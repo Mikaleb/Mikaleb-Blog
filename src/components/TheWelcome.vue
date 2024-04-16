@@ -36,13 +36,13 @@ const goToLinkedIn = () => {
       <span class="longer font-regular">{{ $t('longer.intro') }}</span>
       <span class="longer font-regular">{{ $t('longer.school') }}</span>
 
-      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <button @click="goToGithub" class="btn btn-primary">
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6 pb-4">
+        <button @click="goToGithub" class="btn btn-primary" aria-label="github">
           <svg-icon type="mdi" :path="mdiGithub" :size="size" class="mr-2"></svg-icon>
 
           {{ $t('goToGithub') }}
         </button>
-        <button @click="goToLinkedIn" class="btn btn-secondary">
+        <button @click="goToLinkedIn" class="btn btn-secondary" aria-label="linkedin">
           <svg-icon type="mdi" :path="mdiLinkedin" :size="size" class="mr-2"></svg-icon>
           {{ $t('goToLinkedin') }}
         </button>
@@ -50,17 +50,17 @@ const goToLinkedIn = () => {
     </div>
   </section>
 
-  <section class="container mt-16" id="skills">
+  <section class="container mt-12" id="skills">
     <skills-index></skills-index>
   </section>
   <section class="container mt-16" id="portfolio">
     <portfolio-index></portfolio-index>
   </section>
   <section class="container mt-16" id="contact">
-    <div class="bg-gray-100 p-8 rounded-lg dark:bg-charcoal-400">
+    <div class="bg-charcoal-900 p-8 rounded-lg dark:bg-charcoal-400">
       <h2 class="text-2xl font-semibold mb-4">{{ $t('contact') }}</h2>
       <a
-        class="text-lg mt-4 hover:text-aero transition-all hover:font-bold"
+        class="text-lg mt-4 hover:text-aero transition-all hover:font-bold text-aero-100 hover:cursor-pointer underline"
         href="mailto:mikaleb@live.fr"
         >📧 mikaleb[at]live[dot]fr</a
       >

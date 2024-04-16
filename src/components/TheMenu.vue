@@ -15,18 +15,23 @@
     <div class="nav--second socials centered">
       <ul>
         <li>
-          <a href="https://twitter.com/MikalebCom">
+          <a href="https://twitter.com/MikalebCom" aria-label="Go to twitter">
             <svg-icon type="mdi" :path="mdiTwitter" :size="size"></svg-icon>
           </a>
         </li>
         <li>
-          <a href="https://github.com/Mikaleb">
+          <a href="https://github.com/Mikaleb" aria-label="Go to github">
             <svg-icon type="mdi" :path="mdiGithub" :size="size"></svg-icon>
           </a>
         </li>
         <li>
-          <a href="https://www.linkedin.com/in/mikalebeau/">
+          <a href="https://www.linkedin.com/in/mikalebeau/" aria-label="Go to linkedin">
             <svg-icon type="mdi" :path="mdiLinkedin" :size="size"></svg-icon>
+          </a>
+        </li>
+        <li>
+          <a @click="scrollToContact" class="hover:cursor-pointer" aria-label="Go to contact part">
+            <svg-icon type="mdi" :path="mdiEmail" :size="size"></svg-icon>
           </a>
         </li>
       </ul>
@@ -42,7 +47,7 @@ import { RouterLink } from 'vue-router'
 import LightSwitch from '@/components/LightSwitch.vue'
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiTwitter, mdiGithub, mdiLinkedin } from '@mdi/js'
+import { mdiTwitter, mdiGithub, mdiLinkedin, mdiEmail } from '@mdi/js'
 
 const size = 32
 

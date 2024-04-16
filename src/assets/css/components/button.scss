@@ -3,6 +3,10 @@
   @apply rounded-2xl font-semibold;
   @apply border border-gray-300;
 
+  &:hover {
+    @apply drop-shadow;
+  }
+
   &-primary {
     @apply bg-aero text-white;
     @apply dark:bg-aero-200 dark:text-white;
@@ -13,7 +17,7 @@
   }
 
   &-secondary {
-    @apply bg-gray-200 text-gray-800 dark:bg-charcoal-600 dark:text-charcoal-900;
+    @apply bg-white-500 text-gray-800 dark:bg-charcoal-600 dark:text-charcoal-900;
 
     &:hover {
       @apply bg-gray-300;
