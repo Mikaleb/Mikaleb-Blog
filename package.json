@@ -28,7 +28,8 @@
     "vue": "^3.4.21",
     "vue-i18n": "^9.11.1",
     "vue-router": "^4.3.0",
-    "vue-turnstile": "^1.0.8"
+    "vue-turnstile": "^1.0.8",
+    "vue3-konami-code": "^1.0.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.10.1",

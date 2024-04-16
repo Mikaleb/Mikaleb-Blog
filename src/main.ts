@@ -3,7 +3,7 @@ import './assets/css/main.scss'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createI18n } from 'vue-i18n'
-import { MotionPlugin } from '@vueuse/motion'
+import KonamiCode from 'vue3-konami-code'
 
 import en from '@/locales/en.json'
 import fr from '@/locales/fr.json'
@@ -68,5 +68,12 @@ localStorage.theme = 'dark'
 // Whenever the user explicitly chooses to respect the OS preference
 localStorage.removeItem('theme')
 
-app.use(createPinia()).use(router).use(i18n).use(head).use(MotionPlugin)
+app.use(createPinia()).use(router).use(i18n).use(head)
+
+app.use(KonamiCode, {
+  onKonamiCodeEntered: function () {
+    alert('You know your stuff, gg')
+  }
+})
+
 app.mount('#app')

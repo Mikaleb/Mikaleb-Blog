@@ -6344,6 +6344,11 @@ vue-turnstile@^1.0.8:
   resolved "https://registry.yarnpkg.com/vue-turnstile/-/vue-turnstile-1.0.8.tgz#9115d541ee8f9258fdea66ef159ddd6a26314247"
   integrity sha512-YpxW3YOIQxYYSqmVFG0hKzKHNtLpVAFtZVDU9iCBNJ4nkzYwY8bcW7+q4gXMVchmq1r0E5832wnoEDTZiML3Bg==
 
+vue3-konami-code@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue3-konami-code/-/vue3-konami-code-1.0.0.tgz#18317fafc61e0d40c988e65d488e89e4adf34098"
+  integrity sha512-fhHAPFZA1jsgDHlYz5dnG52RmY9+vtfMthBaY1S5VBxNLdU4EWTbnJO0nfL8Uybw5uHsDqCGtTbGaX7nIvQ9Qw==
+
 vue@^3.4.21:
   version "3.4.21"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.4.21.tgz#69ec30e267d358ee3a0ce16612ba89e00aaeb731"
