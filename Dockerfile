@@ -1,14 +1,15 @@
-FROM node:20.9.0-alpine
+FROM node:20.9.0-alpine AS build-stage
 
 WORKDIR /app
 
-COPY package.json ./
+COPY package*.json ./
 
 RUN yarn install
-RUN yarn build
 
 COPY . .
 
+RUN yarn build
+
 EXPOSE 3000
 
-CMD [ "yarn", "serve" ]
+CMD ["yarn", "serve"]
