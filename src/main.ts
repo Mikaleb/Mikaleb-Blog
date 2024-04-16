@@ -3,6 +3,7 @@ import './assets/css/main.scss'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createI18n } from 'vue-i18n'
+//@ts-ignore
 import KonamiCode from 'vue3-konami-code'
 
 import en from '@/locales/en.json'
