@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button type="checkbox" @click="handleClick()" class="btn">
+    <button type="button" @click="handleClick()" class="btn">
       <svg-icon type="mdi" :path="isActive ? mdiVolumeHigh : mdiVolumeOff" size="24"></svg-icon>
     </button>
   </div>
@@ -8,6 +8,7 @@
 
 <script setup lang="ts">
 import { mdiVolumeHigh, mdiVolumeOff } from '@mdi/js'
+// @ts-ignore
 import { useSound } from '@vueuse/sound'
 import clickSound from '@/assets/sounds/flashlight_ click.mp3'
 // @ts-ignore

@@ -31,6 +31,7 @@ import { type Tech } from '@/data/tech'
 import clickSound from '@/assets/sounds/SFX_PRESS_AB.wav'
 
 import { useMouseInElement } from '@vueuse/core'
+// @ts-ignore
 import { useSound } from '@vueuse/sound'
 
 const { play, stop } = useSound(clickSound)
