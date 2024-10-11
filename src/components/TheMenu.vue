@@ -35,8 +35,9 @@
           </a>
         </li>
       </ul>
-      <div class="switch md:ml-6">
+      <div class="ml-4 switch md:ml-6 flex space-x-3">
         <Light-Switch />
+        <Sound-Switch />
       </div>
     </div>
   </nav>
@@ -45,6 +46,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import LightSwitch from '@/components/LightSwitch.vue'
+import SoundSwitch from '@/components/SoundSwitch.vue'
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiTwitter, mdiGithub, mdiLinkedin, mdiEmail } from '@mdi/js'

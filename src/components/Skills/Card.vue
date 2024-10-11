@@ -3,6 +3,7 @@
     class="card--tech font-italic transition-all duration-500 ease-in-out"
     :id="'comp__' + tech.slug"
     ref="target"
+    @click="handleClick()"
   >
     <div id="bg" :class="isOutside ? 'opacity-100' : 'opacity-0'"></div>
     <div
@@ -27,15 +28,25 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { type Tech } from '@/data/tech'
+import clickSound from '@/assets/sounds/SFX_PRESS_AB.wav'
 
 import { useMouseInElement } from '@vueuse/core'
+import { useSound } from '@vueuse/sound'
+
+const { play, stop } = useSound(clickSound)
+const isActive = ref(true)
+
+const handleClick = () => {
+  isActive.value = !isActive.value
+  isActive.value ? play() : stop()
+}
 
 const props = defineProps<{
   tech: Tech
 }>()
 const target = ref(null)
 
-const { x, y, isOutside } = useMouseInElement(target)
+const { isOutside } = useMouseInElement(target)
 
 const gradientBackground = computed(() => {
   return {
@@ -56,13 +67,13 @@ const gradientBackground = computed(() => {
   @apply min-h-12 min-w-12 rounded-2xl;
   @apply absolute inset-0;
   @apply transition-all duration-500 ease-in-out;
+  @apply cursor-pointer;
 }
 
 .card--tech {
   @apply sm:basis-full  md:basis-1/2 lg:basis-1/3;
   @apply transition-all duration-500 ease-in-out relative;
 
-  //   @apply bg-gradient-to-tr from-charcoal to-aero-300;
   @apply dark:bg-yellow-50;
   @apply text-white;
   @apply p-4 rounded-2xl;
@@ -77,7 +88,7 @@ const gradientBackground = computed(() => {
   }
 
   &:hover {
-    @apply mix-blend-normal;
+    @apply mix-blend-normal cursor-pointer;
 
     .card--tech--image {
       @apply mix-blend-normal;

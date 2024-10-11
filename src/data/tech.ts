@@ -26,7 +26,7 @@ export const techs: Tech[] = [
     slug: 'vite',
     name: 'Vite',
     description:
-      'Vite is a local server for Vue and React templates. It supports TypeScript, JSX, bundling, Hot Module Replacement, server-side rendering, and can proxy requests to a back-end server.',
+      'Vite is a local server for Vue and React templates. It supports TypeScript,  bundling, Hot Module Replacement, server-side rendering, and can proxy requests to a back-end server.',
     image: Vite,
     colors: ['#41D1FF', '#BD34FE', '#FFC61E']
   },
