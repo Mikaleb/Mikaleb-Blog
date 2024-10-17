@@ -3,7 +3,11 @@
     class="card--tech font-italic transition-all duration-500 ease-in-out"
     :id="'comp__' + tech.slug"
     ref="target"
-    @click="handleClick()"
+    v-motion
+    :initial="{ opacity: 0, y: 100, scale: 1 }"
+    :enter="{ opacity: 1, y: 0, scale: 1 }"
+    :delay="200"
+    :duration="600"
   >
     <div id="bg" :class="isOutside ? 'opacity-100' : 'opacity-0'"></div>
     <div
@@ -13,7 +17,12 @@
     ></div>
     <div class="relative">
       <div class="flex align-middle">
-        <img class="card--tech--image" :src="tech.image || 'default.svg'" :alt="tech.name" />
+        <img
+          class="card--tech--image"
+          :src="tech.image || 'default.svg'"
+          :alt="tech.name"
+          @click="handleClick()"
+        />
         <div class="centered">
           <h1>{{ tech.name }}</h1>
         </div>
@@ -28,24 +37,44 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import { type Tech } from '@/data/tech'
-import clickSound from '@/assets/sounds/SFX_PRESS_AB.wav'
+import clickSound from '@/assets/sounds/blop.mp3'
 
-import { useMouseInElement } from '@vueuse/core'
+import { rand, useMouseInElement, useStorage } from '@vueuse/core'
 // @ts-ignore
 import { useSound } from '@vueuse/sound'
+import { useElementTransform } from '@vueuse/motion'
 
-const { play, stop } = useSound(clickSound)
+const playBackRate = ref(1)
+const flagSound = useStorage('flag-sound', true)
+
+const { play, stop: stopSound } = useSound(clickSound, {
+  playBackRate,
+  interrupt: true
+})
 const isActive = ref(true)
+const target = ref<HTMLElement>()
+
+const { transform } = useElementTransform(target)
 
 const handleClick = () => {
+  if (isActive.value) {
+    playBackRate.value = rand(0.5, 4)
+    if (flagSound.value) play()
+    playBackRate.value = 1
+  } else {
+    // reverse sound
+    playBackRate.value = -playBackRate.value
+    if (flagSound.value) play()
+  }
+  transform.scale = isActive.value ? 0.9 : 1
+  transform.y = 0
+  transform.rotate = isActive.value ? -5 : 0
   isActive.value = !isActive.value
-  isActive.value ? play() : stop()
 }
 
 const props = defineProps<{
   tech: Tech
 }>()
-const target = ref(null)
 
 const { isOutside } = useMouseInElement(target)
 
@@ -92,7 +121,7 @@ const gradientBackground = computed(() => {
     @apply mix-blend-normal cursor-pointer;
 
     .card--tech--image {
-      @apply mix-blend-normal;
+      @apply mix-blend-normal cursor-pointer;
     }
   }
 
@@ -101,7 +130,7 @@ const gradientBackground = computed(() => {
   }
 
   &--image {
-    @apply max-h-12 relative mix-blend-luminosity flex-col justify-start items-start inline-flex transition pr-4;
+    @apply max-h-12 relative mix-blend-luminosity flex-col justify-start items-start inline-flex transition pr-4 cursor-pointer;
   }
 }
 

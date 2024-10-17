@@ -70,7 +70,7 @@ const goToLinkedIn = () => {
 
 <style scoped lang="scss">
 #hi {
-  @apply text-3xl;
+  @apply text-3xl mt-4 md:mt-0;
 }
 
 #who {

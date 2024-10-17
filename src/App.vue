@@ -62,7 +62,7 @@ useSeoMeta({
 header {
   line-height: 1.5;
   max-height: 10vh;
-  @apply md:flex items-center p-8 sm:block;
+  @apply md:flex items-center md:p-8 sm:block;
 }
 
 .menu {

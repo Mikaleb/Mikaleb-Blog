@@ -5,11 +5,15 @@
       <img alt="logo" class="logo dark:hidden" src="@/assets/images/logo.svg" />
       <div id="links">
         <RouterLink to="/">{{ $t('home') }}</RouterLink>
-        <a @click="scrollToSkills" class="router-link hover:cursor-pointer">{{ $t('skills') }}</a>
-        <a @click="scrollToPortfolio" class="router-link hover:cursor-pointer">{{
+        <a @click="scrollToSection('skills')" class="router-link hover:cursor-pointer">{{
+          $t('skills')
+        }}</a>
+        <a @click="scrollToSection('portfolio')" class="router-link hover:cursor-pointer">{{
           $t('portfolio')
         }}</a>
-        <a @click="scrollToContact" class="router-link hover:cursor-pointer">{{ $t('contact') }}</a>
+        <a @click="scrollToSection('contact')" class="router-link hover:cursor-pointer">{{
+          $t('contact')
+        }}</a>
       </div>
     </div>
     <div class="nav--second socials centered">
@@ -30,7 +34,11 @@
           </a>
         </li>
         <li>
-          <a @click="scrollToContact" class="hover:cursor-pointer" aria-label="Go to contact part">
+          <a
+            @click="scrollToSection('contact')"
+            class="hover:cursor-pointer"
+            aria-label="Go to contact part"
+          >
             <svg-icon type="mdi" :path="mdiEmail" :size="size"></svg-icon>
           </a>
         </li>
@@ -47,54 +55,40 @@
 import { RouterLink } from 'vue-router'
 import LightSwitch from '@/components/LightSwitch.vue'
 import SoundSwitch from '@/components/SoundSwitch.vue'
+import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
+
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiTwitter, mdiGithub, mdiLinkedin, mdiEmail } from '@mdi/js'
+import { ref } from 'vue'
 
-const size = 32
+const breakpoints = useBreakpoints(breakpointsTailwind)
+
+// Can be 'mobile' or 'tablet' or 'laptop' or 'desktop'
+const laptop = breakpoints.between('md', '2xl')
+
+const size = ref(laptop.value ? 32 : 24)
 
 // find by ID
 
-const scrollToSkills = () => {
-  const skills = document.getElementById('skills')
-  console.debug('🚀 ~ scrollToSkills ~ skills:', skills)
-  if (!skills) return
-  skills.scrollIntoView({ behavior: 'smooth' })
-}
-const scrollToPortfolio = () => {
-  const portfolio = document.getElementById('portfolio')
-  if (!portfolio) return
-  portfolio.scrollIntoView({ behavior: 'smooth' })
-}
-const scrollToContact = () => {
-  const contact = document.getElementById('contact')
-  if (!contact) return
-  contact.scrollIntoView({ behavior: 'smooth' })
+const scrollToSection = (sectionId: string) => {
+  const section = document.getElementById(sectionId)
+  if (!section) return
+  section.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
 <style scoped lang="scss">
 nav {
   @apply transform rounded-full border flex justify-center space-x-4 p-4;
-  min-width: 80%;
-  @apply translate-x-[10%] sm:translate-x-0;
-
-  // border :
   @apply border-charcoal/[0.5] dark:border-white/[0.5];
-
-  // background :
-  @apply bg-white bg-opacity-80 dark:bg-black dark:bg-opacity-50;
-
-  // mobile : bottom centered, 80% width
-  @apply fixed bottom-2;
+  @apply bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-50;
+  @apply fixed left-2/4 -translate-x-2/4 -translate-y-2/4 lg:relative bottom-0;
+  @apply flex-col md:flex-row;
 
   img {
     @apply sm:w-12 sm:h-12 min-w-20;
   }
-
-  // tablet and above
-  @apply lg:relative;
-  @apply bottom-8;
 
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -105,7 +99,7 @@ nav {
     @apply flex flex-row items-center justify-between;
   }
   &--second {
-    @apply flex flex-row items-center justify-between;
+    @apply flex flex-row items-center justify-between mt-2 md:mt-0;
   }
 }
 
@@ -131,7 +125,7 @@ nav {
 }
 
 .logo {
-  @apply transition-all max-w-20;
+  @apply transition-all max-w-20 sm:max-w-16;
   &:hover {
     @apply transition-all transform scale-110;
   }

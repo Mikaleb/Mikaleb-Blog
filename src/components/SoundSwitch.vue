@@ -1,25 +1,26 @@
 <template>
   <div>
     <button type="button" @click="handleClick()" class="btn">
-      <svg-icon type="mdi" :path="isActive ? mdiVolumeHigh : mdiVolumeOff" size="24"></svg-icon>
+      <svg-icon type="mdi" :path="flagSound ? mdiVolumeHigh : mdiVolumeOff" size="24"></svg-icon>
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useStorage } from '@vueuse/core'
 import { mdiVolumeHigh, mdiVolumeOff } from '@mdi/js'
 // @ts-ignore
 import { useSound } from '@vueuse/sound'
 import clickSound from '@/assets/sounds/flashlight_ click.mp3'
 // @ts-ignore
 import SvgIcon from '@jamescoyle/vue-icon'
-import { ref } from 'vue'
 
 const { play, stop } = useSound(clickSound)
-const isActive = ref(true)
+
+const flagSound = useStorage('flag-sound', true)
 const handleClick = () => {
-  isActive.value = !isActive.value
-  isActive.value ? play() : stop()
+  flagSound.value = !flagSound.value
+  flagSound.value ? play() : stop()
 }
 </script>
 
