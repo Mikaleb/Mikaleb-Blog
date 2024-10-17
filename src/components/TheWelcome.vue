@@ -18,7 +18,7 @@ const goToLinkedIn = () => {
 </script>
 
 <template>
-  <section class="grid grid-cols-1 md:grid-cols-2 container gap-8 overflow-auto">
+  <section class="grid grid-cols-1 md:grid-cols-2 container gap-8 overflow-auto" id="home">
     <div>
       <div id="hi">
         <p class="font-bold">{{ $t('hi') }}</p>

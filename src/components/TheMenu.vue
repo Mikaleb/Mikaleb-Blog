@@ -4,16 +4,30 @@
       <img alt="logo" class="logo dark:block hidden" src="@/assets/images/logo_light.svg" />
       <img alt="logo" class="logo dark:hidden" src="@/assets/images/logo.svg" />
       <div id="links">
-        <RouterLink to="/">{{ $t('home') }}</RouterLink>
-        <a @click="scrollToSection('skills')" class="router-link hover:cursor-pointer">{{
-          $t('skills')
-        }}</a>
-        <a @click="scrollToSection('portfolio')" class="router-link hover:cursor-pointer">{{
-          $t('portfolio')
-        }}</a>
-        <a @click="scrollToSection('contact')" class="router-link hover:cursor-pointer">{{
-          $t('contact')
-        }}</a>
+        <a
+          class="router-link hover:cursor-pointer"
+          @click="scrollToSection('home')"
+          :class="{ active: activeSection === 'home' }"
+          >{{ $t('home') }}</a
+        >
+        <a
+          @click="scrollToSection('skills')"
+          class="router-link hover:cursor-pointer"
+          :class="{ active: activeSection === 'skills' }"
+          >{{ $t('skills') }}</a
+        >
+        <a
+          @click="scrollToSection('portfolio')"
+          class="router-link hover:cursor-pointer"
+          :class="{ active: activeSection === 'portfolio' }"
+          >{{ $t('portfolio') }}</a
+        >
+        <a
+          @click="scrollToSection('contact')"
+          class="router-link hover:cursor-pointer"
+          :class="{ active: activeSection === 'contact' }"
+          >{{ $t('contact') }}</a
+        >
       </div>
     </div>
     <div class="nav--second socials centered">
@@ -52,7 +66,6 @@
 </template>
 
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
 import LightSwitch from '@/components/LightSwitch.vue'
 import SoundSwitch from '@/components/SoundSwitch.vue'
 import { breakpointsTailwind, useBreakpoints } from '@vueuse/core'
@@ -66,6 +79,7 @@ const breakpoints = useBreakpoints(breakpointsTailwind)
 
 // Can be 'mobile' or 'tablet' or 'laptop' or 'desktop'
 const laptop = breakpoints.between('md', '2xl')
+const activeSection = ref('home')
 
 const size = ref(laptop.value ? 32 : 24)
 
@@ -76,15 +90,49 @@ const scrollToSection = (sectionId: string) => {
   if (!section) return
   section.scrollIntoView({ behavior: 'smooth' })
 }
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        activeSection.value = entry.target.id
+      }
+    })
+  },
+  {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5
+  }
+)
+
+const sections = ['home', 'skills', 'portfolio', 'contact']
+
+const observeSections = () => {
+  sections.forEach((section) => {
+    const element = document.getElementById(section)
+    if (element) {
+      observer.observe(element)
+    }
+  })
+}
+
+// on scroll, trigger the observer
+window.addEventListener('scroll', () => {
+  observeSections()
+})
 </script>
 
 <style scoped lang="scss">
 nav {
-  @apply transform rounded-full border flex justify-center space-x-4 p-4;
-  @apply border-charcoal/[0.5] dark:border-white/[0.5];
+  @apply transform lg:rounded-full border flex justify-center space-x-4 p-4 sm:p-4 md:p-6 lg:p-4;
+  @apply md:border-charcoal/[0.5] dark:border-white/[0.5];
   @apply bg-white bg-opacity-60 dark:bg-black dark:bg-opacity-50;
-  @apply fixed left-2/4 -translate-x-2/4 -translate-y-2/4 lg:relative bottom-0;
+  @apply fixed left-2/4 -translate-x-2/4 -translate-y-2/4 lg:relative -bottom-4;
   @apply flex-col md:flex-row;
+  @apply overflow-auto;
+  // make sure if it overflow that it stack vertically
+  @apply md:flex-wrap;
 
   img {
     @apply sm:w-12 sm:h-12 min-w-20;
@@ -107,13 +155,13 @@ nav {
   @apply md:ml-8;
   @apply md:flex hidden;
 
-  a.router-link-exact-active {
-    @apply text-aero dark:text-aero;
-  }
-
   a {
     @apply font-semibold text-lg  inline-block text-charcoal dark:text-white px-2;
     @apply transition-all duration-300 ease-in-out;
+
+    &.active {
+      @apply text-aero dark:text-aero;
+    }
 
     &:first-of-type {
       border: 0;
